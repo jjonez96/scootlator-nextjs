@@ -1,8 +1,8 @@
 import Head from "next/head";
 
 import { useRef, useState } from "react";
-import useGeoLocation from "../hooks/useGeoLocation";
-import useOperators from "../hooks/useOperators";
+import useGeoLocation from "./components/hooks/useGeoLocation";
+import useOperators from "./components/hooks/useOperators";
 import LoadingScreen from "./components/LoadingScreen";
 import CalculationResults from "./components/CalculationResults";
 import Forms from "./components/Forms";
@@ -101,12 +101,17 @@ export default function Home() {
         destinationRef.current.value = `${place.formatted_address}`;
       });
   };
-
+  const deleteElement = () => {
+    document
+      .querySelectorAll(".pac-container")
+      .forEach((element) => element.remove());
+  };
   const clearRoute = () => {
     setDirectionResponse(null);
     setDistance("");
     setDuration("");
     setPrice("");
+    deleteElement();
     map.setZoom(0);
     setSelected(0);
     selectInputRef.current.value = "";
@@ -187,11 +192,13 @@ export default function Home() {
                 <div className="hideload" loading="lazy">
                   <TierMarkers
                     originRef={originRef}
+                    destinationRef={destinationRef}
                     geocodeJson={geocodeJson}
                     clusterer={clusterer}
                   />
                   <VoiMarkers
                     originRef={originRef}
+                    destinationRef={destinationRef}
                     geocodeJson={geocodeJson}
                     clusterer={clusterer}
                   />

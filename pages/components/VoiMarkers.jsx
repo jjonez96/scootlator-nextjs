@@ -3,10 +3,10 @@ import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { MdMyLocation } from "react-icons/md";
 import { IoBatteryCharging } from "react-icons/io5";
-import useScootData from "../../hooks/useScootData";
+import useScootData from "./hooks/useScootData";
 import markerIcons from "../../styles/markerIcons.json";
 
-const VoiMarkers = ({ originRef, geocodeJson, clusterer }) => {
+const VoiMarkers = ({ originRef, destinationRef, geocodeJson, clusterer }) => {
   const [selectedMarker, setSelectedMarker] = useState("");
   let apis = useScootData();
   const markers = apis.voiMarkers;
@@ -36,6 +36,7 @@ const VoiMarkers = ({ originRef, geocodeJson, clusterer }) => {
           position={marker}
           onClick={() => {
             setSelectedMarker(marker);
+            destinationRef.current.value = "";
           }}
         />
       ))}
