@@ -1,11 +1,12 @@
 # Scootlator
 
-## This is the new version of this app. Old version was build with CRA "Create React App" and this new one is build with Next.js.
+This is the new version of this app. Old version was build with CRA "Create React App" and this new one is build with Next.js. <br>
+Link to old repo: https://github.com/jjonez96/Scootlator
 
 Scootlator is really handy and fast single page application(SPA) to calculate e-scoot trips such as Tier, Voi, Dott etc.
 <br>
 <b>Preview:</b> <br>
-https://scootlator.netlify.app <br> <br>
+https://scootlator.vercel.app <br> <br>
 ![image](https://user-images.githubusercontent.com/90967564/210266025-5084e46f-39ae-4b86-b3f6-9e6b233f0d30.png)
 
 ## Tech Stack:
