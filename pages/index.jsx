@@ -1,8 +1,8 @@
 import Head from "next/head";
 
 import { useRef, useState } from "react";
-import useGeoLocation from "./components/hooks/useGeoLocation";
-import useOperators from "./components/hooks/useOperators";
+import useGeoLocation from "../hooks/useGeoLocation";
+import useOperators from "../hooks/useOperators";
 import LoadingScreen from "./components/LoadingScreen";
 import CalculationResults from "./components/CalculationResults";
 import Forms from "./components/Forms";
