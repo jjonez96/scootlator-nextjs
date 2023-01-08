@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
-import useGeoLocation from "../hooks/useGeoLocation";
-import useOperators from "../hooks/useOperators";
+import useGeoLocation from "../../hooks/useGeoLocation";
+import useOperators from "../../hooks/useOperators";
 import LoadingScreen from "./LoadingScreen";
 import CalculationResults from "./CalculationResults";
 import Forms from "./Forms";
