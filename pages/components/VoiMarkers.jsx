@@ -3,14 +3,32 @@ import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { MdMyLocation } from "react-icons/md";
 import { IoBatteryCharging } from "react-icons/io5";
-import useScootData from "../../hooks/useScootData";
 import markerIcons from "../../styles/markerIcons.json";
+import Spinner from "react-bootstrap/Spinner";
+import useSWR from "swr";
+import useScootData from "../../hooks/useScootData";
 
 const VoiMarkers = ({ originRef, destinationRef, geocodeJson, clusterer }) => {
   const [selectedMarker, setSelectedMarker] = useState("");
-  let apis = useScootData();
-  const markers = apis.voiMarkers;
+  const total = useScootData();
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
+  const { data, error } = useSWR(
+    "https://scootdata.cyclic.app/api/voi",
+    fetcher
+  );
+  if (error) return <div className="loading">Hups jokin meni pieleen.</div>;
 
+  if (!data)
+    return (
+      <div className="loading">
+        <Spinner
+          animation="border"
+          variant="info"
+          size="sm"
+          className="loading"
+        />
+      </div>
+    );
   /**Click handler for changing coordinates to address(passing address to origin input)*/
   const handleScootLocationClick = () => {
     const url = `${geocodeJson}?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&latlng=${selectedMarker.lat},${selectedMarker.lng}`;
@@ -24,10 +42,8 @@ const VoiMarkers = ({ originRef, destinationRef, geocodeJson, clusterer }) => {
 
   return (
     <>
-      {!apis.isLoading && (
-        <p className="loadingText">Scootteja löytyi: {apis.totalMarkers}</p>
-      )}
-      {markers.map((marker, id) => (
+      <p className="loadingText">Scootteja löytyi: {total}</p>
+      {data.map((marker, id) => (
         <Marker
           icon={markerIcons[1]}
           key={id}

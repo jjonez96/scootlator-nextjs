@@ -42,7 +42,7 @@ const Forms = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [settings]);
-
+  console.log(onOffMarkers);
   const handleFormSubmit = (e) => {
     e.preventDefault();
     return false;

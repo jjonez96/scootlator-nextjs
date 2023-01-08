@@ -1,5 +1,4 @@
 import Head from "next/head";
-
 import { useRef, useState } from "react";
 import useGeoLocation from "../hooks/useGeoLocation";
 import useOperators from "../hooks/useOperators";
@@ -101,17 +100,13 @@ export default function Home() {
         destinationRef.current.value = `${place.formatted_address}`;
       });
   };
-  const deleteElement = () => {
-    document
-      .querySelectorAll(".pac-container")
-      .forEach((element) => element.remove());
-  };
+
   const clearRoute = () => {
     setDirectionResponse(null);
     setDistance("");
     setDuration("");
     setPrice("");
-    deleteElement();
+    map.panTo(center);
     map.setZoom(0);
     setSelected(0);
     selectInputRef.current.value = "";
@@ -132,6 +127,10 @@ export default function Home() {
   if (!isLoaded) {
     return <LoadingScreen />;
   }
+  /** Removes unwanted elements from body */
+  document
+    .querySelectorAll(".pac-container")
+    .forEach((element) => element.remove());
 
   return (
     <main id="top">
@@ -180,31 +179,21 @@ export default function Home() {
           }}
           onLoad={(map) => setMap(map)}
         >
-          {onOffMarkers === false ? null : (
-            <MarkerClusterer
-              options={{
-                styles: clusterStyles,
-                gridSize: 60,
-                maxZoom: 17,
-              }}
-            >
-              {(clusterer) => (
-                <div className="hideload" loading="lazy">
-                  <TierMarkers
-                    originRef={originRef}
-                    destinationRef={destinationRef}
-                    geocodeJson={geocodeJson}
-                    clusterer={clusterer}
-                  />
-                  <VoiMarkers
-                    originRef={originRef}
-                    destinationRef={destinationRef}
-                    geocodeJson={geocodeJson}
-                    clusterer={clusterer}
-                  />
-                </div>
-              )}
-            </MarkerClusterer>
+          {onOffMarkers === false ? (
+            <div style={{ display: "none" }}></div>
+          ) : (
+            <div className="hideload">
+              <TierMarkers
+                originRef={originRef}
+                destinationRef={destinationRef}
+                geocodeJson={geocodeJson}
+              />
+              <VoiMarkers
+                originRef={originRef}
+                destinationRef={destinationRef}
+                geocodeJson={geocodeJson}
+              />
+            </div>
           )}
           <Marker position={center} icon={markerIcons[0]} />
           {directionResponse && (
