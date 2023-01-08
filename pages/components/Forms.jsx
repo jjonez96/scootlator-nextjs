@@ -20,25 +20,24 @@ const Forms = ({
 }) => {
   const autocompleteRef = useRef();
 
-  /**Bounds for Googlemaps AutoComplete*/
-  const defaultBounds = {
-    north: center.lat + 0.1,
-    south: center.lat - 0.1,
-    east: center.lng + 0.1,
-    west: center.lng - 0.1,
-  };
-
-  /**Settings for Googlemaps AutoComplete*/
-  const settings = {
-    componentRestrictions: { country: "fi" },
-    fields: ["place_id", "geometry", "formatted_address", "name"],
-    bounds: defaultBounds,
-    strictBounds: false,
-  };
-
   useEffect(() => {
     if (typeof window !== "undefined") {
       const autocomplete = window.google.maps;
+      /**Bounds for Googlemaps AutoComplete*/
+      const defaultBounds = {
+        north: center.lat + 0.1,
+        south: center.lat - 0.1,
+        east: center.lng + 0.1,
+        west: center.lng - 0.1,
+      };
+
+      /**Settings for Googlemaps AutoComplete*/
+      const settings = {
+        componentRestrictions: { country: "fi" },
+        fields: ["place_id", "geometry", "formatted_address", "name"],
+        bounds: defaultBounds,
+        strictBounds: false,
+      };
       if (autocomplete) {
         autocompleteRef.current = new autocomplete.places.Autocomplete(
           destinationRef.current,
@@ -51,7 +50,7 @@ const Forms = ({
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [settings]);
+  }, []);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
