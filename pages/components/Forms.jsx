@@ -135,25 +135,7 @@ const Forms = ({
               </div>
             ) : null}
           </Dropdown>
-          <Form.Select
-            className="form-control text-light bg-dark w-75"
-            ref={selectInputRef}
-            onChange={(e) => setSelected(e.target.value)}
-            required
-          >
-            <option disabled={false} value="">
-              Valitse operaattori
-            </option>
-            {operator.map((service) => (
-              <option
-                key={`${service.pricePerMin},${service.name},${service.startPrice}`}
-                value={service.pricePerMin}
-              >
-                {service.name} {service.pricePerMin}€/min + {service.startPrice}
-                € aloitusmaksu
-              </option>
-            ))}
-          </Form.Select>
+
           <Button
             className="mx-2 fw-bold text-dark"
             variant="danger"
