@@ -8,12 +8,10 @@ import VoiMarkers from "./VoiMarkers";
 const Forms = ({
   originRef,
   destinationRef,
-  center,
   calculateRoute,
   operator,
   onOffMarkers,
   handleScootMarkers,
-  map,
   selectInputRef,
   setSelected,
   clearRoute,
@@ -64,13 +62,7 @@ const Forms = ({
           <Form.Label className="text-light">
             Valitse lähtöpaikka tai scootti
           </Form.Label>
-          <MdMyLocation
-            className="icon text-info bg-dark"
-            onClick={(e) => {
-              map.panTo(center);
-              map.setZoom(18);
-            }}
-          />
+          <MdMyLocation className="icon text-info bg-dark" />
         </Form.Group>
         <Form.Group className="was-validated form-floating col-auto container formWidth">
           <Form.Control
