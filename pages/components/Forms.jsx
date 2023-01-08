@@ -20,19 +20,10 @@ const Forms = ({
 }) => {
   const autocompleteRef = useRef();
 
-  /**Bounds for Googlemaps AutoComplete*/
-  const defaultBounds = {
-    north: center.lat + 0.1,
-    south: center.lat - 0.1,
-    east: center.lng + 0.1,
-    west: center.lng - 0.1,
-  };
-
   /**Settings for Googlemaps AutoComplete*/
   const settings = {
     componentRestrictions: { country: "fi" },
     fields: ["place_id", "geometry", "formatted_address", "name"],
-    bounds: defaultBounds,
     strictBounds: false,
   };
 
@@ -78,7 +69,6 @@ const Forms = ({
             onClick={(e) => {
               map.panTo(center);
               map.setZoom(18);
-              handleOriginClick(e);
             }}
           />
         </Form.Group>
