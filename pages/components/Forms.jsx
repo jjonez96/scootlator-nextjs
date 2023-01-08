@@ -18,7 +18,6 @@ const Forms = ({
   setSelected,
   clearRoute,
 }) => {
-  const autocomplete = window.google.maps;
   const autocompleteRef = useRef();
 
   /**Bounds for Googlemaps AutoComplete*/
@@ -38,15 +37,18 @@ const Forms = ({
   };
 
   useEffect(() => {
-    if (autocomplete) {
-      autocompleteRef.current = new autocomplete.places.Autocomplete(
-        destinationRef.current,
-        settings,
-        (autocompleteRef.current = new autocomplete.places.Autocomplete(
-          originRef.current,
-          settings
-        ))
-      );
+    if (typeof window !== "undefined") {
+      const autocomplete = window.google.maps;
+      if (autocomplete) {
+        autocompleteRef.current = new autocomplete.places.Autocomplete(
+          destinationRef.current,
+          settings,
+          (autocompleteRef.current = new autocomplete.places.Autocomplete(
+            originRef.current,
+            settings
+          ))
+        );
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [settings]);
