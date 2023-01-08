@@ -42,6 +42,13 @@ export default function Home() {
   /** User gps coordinates */
   const location = useGeoLocation();
   const center = location.coordinates;
+  const defaultBounds = {
+    north: center.lat + 0.1,
+    south: center.lat - 0.1,
+    east: center.lng + 0.1,
+    west: center.lng - 0.1,
+  };
+
   /** Operator selector */
   const operator = useOperators();
   const rentalStartPrice = operator.map((e) => e.startPrice);
@@ -145,6 +152,7 @@ export default function Home() {
           calculateRoute={calculateRoute}
           handleScootMarkers={handleScootMarkers}
           onOffMarkers={onOffMarkers}
+          defaultBounds={defaultBounds}
         />
         <CalculationResults
           duration={duration}

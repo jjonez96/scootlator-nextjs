@@ -17,16 +17,9 @@ const Forms = ({
   selectInputRef,
   setSelected,
   clearRoute,
+  defaultBounds,
 }) => {
   const autocompleteRef = useRef();
-  const location = center;
-  const defaultBounds = {
-    north: location.lat + 0.1,
-    south: location.lat - 0.1,
-    east: location.lng + 0.1,
-    west: location.lng - 0.1,
-  };
-
   const settings = {
     componentRestrictions: { country: "fi" },
     fields: ["place_id", "geometry", "formatted_address", "name"],
