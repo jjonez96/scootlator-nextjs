@@ -19,12 +19,12 @@ const Forms = ({
   clearRoute,
 }) => {
   const autocompleteRef = useRef();
-
+  const location = center;
   const defaultBounds = {
-    north: center.lat + 0.1,
-    south: center.lat - 0.1,
-    east: center.lng + 0.1,
-    west: center.lng - 0.1,
+    north: location.lat + 0.1,
+    south: location.lat - 0.1,
+    east: location.lng + 0.1,
+    west: location.lng - 0.1,
   };
 
   const settings = {
