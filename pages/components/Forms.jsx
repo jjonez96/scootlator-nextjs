@@ -18,7 +18,6 @@ const Forms = ({
   setSelected,
   clearRoute,
 }) => {
-  const autocomplete = google.maps;
   const autocompleteRef = useRef();
 
   /**Bounds for Googlemaps AutoComplete*/
@@ -38,11 +37,11 @@ const Forms = ({
   };
 
   useEffect(() => {
-    if (autocomplete) {
-      autocompleteRef.current = new autocomplete.places.Autocomplete(
+    if (google.maps) {
+      autocompleteRef.current = new google.maps.places.Autocomplete(
         destinationRef.current,
         settings,
-        (autocompleteRef.current = new autocomplete.places.Autocomplete(
+        (autocompleteRef.current = new google.maps.places.Autocomplete(
           originRef.current,
           settings
         ))
