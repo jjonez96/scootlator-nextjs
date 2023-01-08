@@ -61,12 +61,6 @@ export default function Home() {
       destination: destinationRef.current.value,
       travelMode: google.maps.TravelMode.BICYCLING,
     });
-    if (originRef.current.value === "") {
-      console.log("asd");
-    }
-    if (destinationRef.current.value === "") {
-      console.log("asd");
-    }
 
     setDirectionResponse(results);
     setDistance(results.routes[0].legs[0].distance.text);
@@ -142,7 +136,6 @@ export default function Home() {
       <div>
         <Forms
           setSelected={setSelected}
-          operator={operator}
           originRef={originRef}
           destinationRef={destinationRef}
           map={map}

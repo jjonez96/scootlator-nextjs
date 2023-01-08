@@ -4,13 +4,12 @@ import { MdClose, MdMyLocation, MdElectricScooter } from "react-icons/md";
 import TierMarkers from "./TierMarkers";
 import { FaTimes } from "react-icons/fa";
 import VoiMarkers from "./VoiMarkers";
-
+import useOperators from "../../hooks/useOperators";
 const Forms = ({
   originRef,
   destinationRef,
   center,
   calculateRoute,
-  operator,
   onOffMarkers,
   handleScootMarkers,
   map,
@@ -20,6 +19,8 @@ const Forms = ({
   defaultBounds,
 }) => {
   const autocompleteRef = useRef();
+  const operators = useOperators();
+
   const settings = {
     componentRestrictions: { country: "fi" },
     fields: ["place_id", "geometry", "formatted_address", "name"],
@@ -134,7 +135,7 @@ const Forms = ({
             <option disabled={false} value="">
               Valitse operaattori
             </option>
-            {operator.map((service) => (
+            {operators.map((service) => (
               <option
                 key={`${service.pricePerMin},${service.name},${service.startPrice}`}
                 value={service.pricePerMin}
