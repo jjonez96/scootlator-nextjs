@@ -18,7 +18,7 @@ const Forms = ({
   setSelected,
   clearRoute,
 }) => {
-  const autocomplete = window.google.maps;
+  const autocomplete = google.maps;
   const autocompleteRef = useRef();
 
   /**Bounds for Googlemaps AutoComplete*/
