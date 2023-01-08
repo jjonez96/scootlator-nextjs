@@ -59,18 +59,6 @@ const Forms = ({
     destinationRef.current.value = "";
   };
 
-  /**Click handler for changing coordinates to address*/
-  const geocodeJson = "https://maps.googleapis.com/maps/api/geocode/json";
-  const handleOriginClick = () => {
-    const url = `${geocodeJson}?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&latlng=${center.lat},${center.lng}`;
-    fetch(url)
-      .then((response) => response.json())
-      .then((location) => {
-        const place = location.results[0];
-        originRef.current.value = `${place.formatted_address}`;
-      });
-  };
-
   return (
     <div className="customBg fixed-top shadow p-1 container-fluid ">
       <h6 className="ss text-info">Laske e-scoot matka</h6>
