@@ -11,7 +11,9 @@ import useScootData from "../../hooks/useScootData";
 const VoiMarkers = ({ originRef, destinationRef, geocodeJson, clusterer }) => {
   const [selectedMarker, setSelectedMarker] = useState("");
   const total = useScootData();
+
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
+
   const { data, error } = useSWR(
     "https://scootdata.cyclic.app/api/voi",
     fetcher
@@ -29,6 +31,7 @@ const VoiMarkers = ({ originRef, destinationRef, geocodeJson, clusterer }) => {
         />
       </div>
     );
+
   /**Click handler for changing coordinates to address(passing address to origin input)*/
   const handleScootLocationClick = () => {
     const url = `${geocodeJson}?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&latlng=${selectedMarker.lat},${selectedMarker.lng}`;
@@ -42,7 +45,7 @@ const VoiMarkers = ({ originRef, destinationRef, geocodeJson, clusterer }) => {
 
   return (
     <>
-      <p className="loadingText">Scootteja löytyi: {total}</p>
+      <p className="loadingText">Skuutteja löytyi: {total}</p>
       {data.map((marker, id) => (
         <Marker
           icon={markerIcons[1]}

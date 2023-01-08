@@ -107,7 +107,7 @@ export default function Home() {
     setDuration("");
     setPrice("");
     map.panTo(center);
-    map.setZoom(0);
+    map.setZoom(12 - 6);
     setSelected(0);
     selectInputRef.current.value = "";
     destinationRef.current.value = "";
@@ -158,7 +158,7 @@ export default function Home() {
         />
         <GoogleMap
           center={center}
-          zoom={6 - 6}
+          zoom={12 - 6}
           ref={mapRef}
           onClick={(ev) => {
             handleDestinationMapClick(ev);

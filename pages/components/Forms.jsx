@@ -42,7 +42,7 @@ const Forms = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [settings]);
-  console.log(onOffMarkers);
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
     return false;
@@ -66,7 +66,7 @@ const Forms = ({
 
   return (
     <div className="customBg fixed-top shadow p-1 container-fluid ">
-      <h6 className="ss text-info">Laske e-scoot matka</h6>
+      <h6 className="ss text-info">Laske skuutti matka</h6>
       <Form className="hstack gap-1 row" onSubmit={handleFormSubmit}>
         <Form.Group className="form-floating was-validated col-auto formWidth">
           <Form.Control
@@ -76,7 +76,7 @@ const Forms = ({
             required
           />
           <Form.Label className="text-light">
-            Valitse lähtöpaikka tai scootti
+            Valitse lähtöpaikka tai skuutti
           </Form.Label>
           <MdMyLocation
             className="icon text-info bg-dark"
