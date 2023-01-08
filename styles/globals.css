@@ -1,9 +1,11 @@
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  background-color: #303030;
 }
 
 a {
@@ -15,12 +17,243 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+.btn-outline-primary {
+  color: #000;
+}
+.customBg {
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(7.4px);
+  -webkit-backdrop-filter: blur(3.4px);
+  width: 55% !important;
+}
+
+@media only screen and (max-width: 1200px) {
+  .customBg {
+    width: 100% !important;
   }
-  body {
-    color: white;
-    background: black;
+}
+.ss {
+  text-align: center;
+}
+@media only screen and (max-width: 900px) {
+  .ss {
+    text-align: left;
   }
+}
+.loading {
+  position: fixed;
+  top: 6px;
+  right: 15px;
+}
+.loadingText {
+  position: fixed;
+  top: 3px;
+  right: 5px;
+  color: #0dcaf0;
+  font-size: 15px;
+}
+
+.hideload {
+  display: none;
+}
+
+.resultsBg {
+  width: 45% !important;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+@media only screen and (max-width: 900px) {
+  .resultsBg {
+    width: 100% !important;
+  }
+}
+.input-height {
+  height: 40px !important;
+  padding-top: 20px !important;
+  position: relative;
+  left: 1px !important;
+}
+@media only screen and (max-width: 1200px) {
+  .input-height {
+    position: relative;
+    left: 0px !important;
+  }
+}
+
+.pac-container {
+  background-color: #212529;
+  box-shadow: none;
+  z-index: 1051 !important;
+}
+
+.pac-matched {
+  color: red;
+}
+.pac-item-query {
+  color: red;
+}
+.pac-item {
+  cursor: default;
+  padding: 0 4px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  line-height: 30px;
+  text-align: left;
+  border-top: 1px solid #0dcaf0;
+  font-size: 11px;
+  color: #999;
+}
+.pac-item:hover {
+  background-color: #101214;
+}
+.pac-item-selected,
+.pac-item-selected:hover {
+  background-color: #101214;
+}
+.pac-matched {
+  color: #e1e3e4;
+}
+.pac-item-query {
+  color: #e1e3e4;
+}
+.pac-placeholder {
+  color: rgb(255, 0, 0);
+}
+
+label {
+  position: relative;
+  top: -9px !important;
+  left: 10px !important;
+}
+.map-container {
+  width: 100%;
+  height: 100vh;
+}
+@media only screen and (max-width: 600px) {
+  .map-container {
+    height: 96vh;
+  }
+}
+
+.combobox-input {
+  width: 20%;
+  padding: 0.5rem;
+}
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  top: 47%;
+  right: 50px;
+}
+
+.icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  height: 20px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+a[href^="http://maps.google.com/maps"]
+{
+  display: none !important;
+}
+
+.gmnoprint a,
+.gmnoprint span,
+.gm-style-cc {
+  display: none;
+}
+.gmnoprint div {
+  background: none !important;
+}
+.icon:hover {
+  color: green;
+}
+.gm-iw {
+  color: #0dcafe !important;
+}
+.gm-style .gm-style-iw-d::-webkit-scrollbar-track,
+.gm-style .gm-style-iw-d::-webkit-scrollbar-track-piece,
+.gm-style .gm-style-iw-c,
+.gm-style .gm-style-iw-t::after {
+  background: #212529;
+  color: #0dcaf0 !important;
+}
+.gm-style .gm-style-iw-tc::after {
+  background: #a0a0a0;
+}
+button.gm-ui-hover-effect > span {
+  background-color: #0dcaf0 !important;
+}
+.voiheading {
+  color: #f46c63;
+  font-size: 18px;
+}
+.tierheading {
+  color: #00ffe5;
+  font-size: 18px;
+}
+.vuokraa {
+  text-decoration: none;
+  color: #000;
+}
+.vuokraa:hover {
+  color: #000;
+}
+
+.markBtns {
+  margin-left: 6px;
+}
+.battery {
+  position: relative;
+  top: 1px;
+  font-weight: 400;
+}
+.alertt {
+  position: relative;
+  top: 3px;
+}
+.custombtn {
+  border-bottom-left-radius: 25px !important;
+  border-bottom-right-radius: 25px !important;
+  position: relative;
+  top: 4.5px;
+  width: 98% !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .custombtn {
+    width: 95% !important;
+  }
+}
+
+.dropdown-toggle::after {
+  content: none !important;
+}
+
+.formWidth {
+  width: 49.6% !important;
+}
+@media only screen and (max-width: 900px) {
+  .formWidth {
+    width: 100% !important;
+  }
+}
+
+.form-switch .form-check-input {
+  background-color: #fff !important;
+  box-shadow: none !important;
+  border: transparent;
+}
+.form-switch .form-check-input:checked {
+  background-color: #0dcafe !important;
 }
