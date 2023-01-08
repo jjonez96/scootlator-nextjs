@@ -30,7 +30,6 @@ export default function Home() {
   const [price, setPrice] = useState("");
   const [libraries] = useState(["places"]);
   const [selected, setSelected] = useState();
-  const [error, setError] = useState(null);
 
   /** Refs */
   /** @type React.MutableRefObject<HTMLInputElement> */

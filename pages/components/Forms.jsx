@@ -8,29 +8,41 @@ import VoiMarkers from "./VoiMarkers";
 const Forms = ({
   originRef,
   destinationRef,
+  center,
   calculateRoute,
   operator,
   onOffMarkers,
   handleScootMarkers,
+  map,
   selectInputRef,
   setSelected,
   clearRoute,
 }) => {
+  const autocomplete = window.google.maps;
   const autocompleteRef = useRef();
+
+  /**Bounds for Googlemaps AutoComplete*/
+  const defaultBounds = {
+    north: center.lat + 0.1,
+    south: center.lat - 0.1,
+    east: center.lng + 0.1,
+    west: center.lng - 0.1,
+  };
 
   /**Settings for Googlemaps AutoComplete*/
   const settings = {
     componentRestrictions: { country: "fi" },
     fields: ["place_id", "geometry", "formatted_address", "name"],
+    bounds: defaultBounds,
     strictBounds: false,
   };
 
   useEffect(() => {
-    if (google.maps) {
-      autocompleteRef.current = new google.maps.places.Autocomplete(
+    if (autocomplete) {
+      autocompleteRef.current = new autocomplete.places.Autocomplete(
         destinationRef.current,
         settings,
-        (autocompleteRef.current = new google.maps.places.Autocomplete(
+        (autocompleteRef.current = new autocomplete.places.Autocomplete(
           originRef.current,
           settings
         ))
@@ -48,6 +60,18 @@ const Forms = ({
     destinationRef.current.value = "";
   };
 
+  /**Click handler for changing coordinates to address*/
+  const geocodeJson = "https://maps.googleapis.com/maps/api/geocode/json";
+  const handleOriginClick = () => {
+    const url = `${geocodeJson}?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&latlng=${center.lat},${center.lng}`;
+    fetch(url)
+      .then((response) => response.json())
+      .then((location) => {
+        const place = location.results[0];
+        originRef.current.value = `${place.formatted_address}`;
+      });
+  };
+
   return (
     <div className="customBg fixed-top shadow p-1 container-fluid ">
       <h6 className="ss text-info">Laske e-scoot matka</h6>
@@ -62,7 +86,14 @@ const Forms = ({
           <Form.Label className="text-light">
             Valitse lähtöpaikka tai scootti
           </Form.Label>
-          <MdMyLocation className="icon text-info bg-dark" />
+          <MdMyLocation
+            className="icon text-info bg-dark"
+            onClick={(e) => {
+              map.panTo(center);
+              map.setZoom(18);
+              handleOriginClick(e);
+            }}
+          />
         </Form.Group>
         <Form.Group className="was-validated form-floating col-auto container formWidth">
           <Form.Control
@@ -103,6 +134,25 @@ const Forms = ({
               </div>
             ) : null}
           </Dropdown>
+          <Form.Select
+            className="form-control text-light bg-dark w-75"
+            ref={selectInputRef}
+            onChange={(e) => setSelected(e.target.value)}
+            required
+          >
+            <option disabled={false} value="">
+              Valitse operaattori
+            </option>
+            {operator.map((service) => (
+              <option
+                key={`${service.pricePerMin},${service.name},${service.startPrice}`}
+                value={service.pricePerMin}
+              >
+                {service.name} {service.pricePerMin}€/min + {service.startPrice}
+                € aloitusmaksu
+              </option>
+            ))}
+          </Form.Select>
           <Button
             className="mx-2 fw-bold text-dark"
             variant="danger"
