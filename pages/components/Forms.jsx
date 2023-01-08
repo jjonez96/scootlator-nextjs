@@ -4,7 +4,7 @@ import { MdClose, MdMyLocation, MdElectricScooter } from "react-icons/md";
 import TierMarkers from "./TierMarkers";
 import { FaTimes } from "react-icons/fa";
 import VoiMarkers from "./VoiMarkers";
-
+import useOperators from "../../hooks/useOperators";
 const Forms = ({
   originRef,
   destinationRef,
@@ -19,7 +19,7 @@ const Forms = ({
   clearRoute,
 }) => {
   const autocompleteRef = useRef();
-
+  const operators = useOperators();
   useEffect(() => {
     if (typeof window !== "undefined") {
       const autocomplete = window.google.maps;
@@ -135,7 +135,25 @@ const Forms = ({
               </div>
             ) : null}
           </Dropdown>
-
+          <Form.Select
+            className="form-control text-light bg-dark w-75"
+            ref={selectInputRef}
+            onChange={(e) => setSelected(e.target.value)}
+            required
+          >
+            <option disabled={false} value="">
+              Valitse operaattori
+            </option>
+            {operators.map((service) => (
+              <option
+                key={`${service.pricePerMin},${service.name},${service.startPrice}`}
+                value={service.pricePerMin}
+              >
+                {service.name} {service.pricePerMin}€/min + {service.startPrice}
+                € aloitusmaksu
+              </option>
+            ))}
+          </Form.Select>
           <Button
             className="mx-2 fw-bold text-dark"
             variant="danger"
