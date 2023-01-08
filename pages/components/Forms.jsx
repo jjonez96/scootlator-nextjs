@@ -4,7 +4,7 @@ import { MdClose, MdMyLocation, MdElectricScooter } from "react-icons/md";
 import TierMarkers from "./TierMarkers";
 import { FaTimes } from "react-icons/fa";
 import VoiMarkers from "./VoiMarkers";
-import useOperators from "../../hooks/useOperators";
+
 const Forms = ({
   originRef,
   destinationRef,
@@ -19,38 +19,35 @@ const Forms = ({
   clearRoute,
 }) => {
   const autocompleteRef = useRef();
-  const operators = useOperators();
+
+  const defaultBounds = {
+    north: center.lat + 0.1,
+    south: center.lat - 0.1,
+    east: center.lng + 0.1,
+    west: center.lng - 0.1,
+  };
+
+  const settings = {
+    componentRestrictions: { country: "fi" },
+    fields: ["place_id", "geometry", "formatted_address", "name"],
+    bounds: defaultBounds,
+    strictBounds: false,
+  };
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const autocomplete = window.google.maps;
-      /**Bounds for Googlemaps AutoComplete*/
-      const defaultBounds = {
-        north: center.lat + 0.1,
-        south: center.lat - 0.1,
-        east: center.lng + 0.1,
-        west: center.lng - 0.1,
-      };
-
-      /**Settings for Googlemaps AutoComplete*/
-      const settings = {
-        componentRestrictions: { country: "fi" },
-        fields: ["place_id", "geometry", "formatted_address", "name"],
-        bounds: defaultBounds,
-        strictBounds: false,
-      };
-      if (autocomplete) {
-        autocompleteRef.current = new autocomplete.places.Autocomplete(
-          destinationRef.current,
-          settings,
-          (autocompleteRef.current = new autocomplete.places.Autocomplete(
-            originRef.current,
-            settings
-          ))
-        );
-      }
+      autocompleteRef.current = new autocomplete.places.Autocomplete(
+        destinationRef.current,
+        settings,
+        (autocompleteRef.current = new autocomplete.places.Autocomplete(
+          originRef.current,
+          settings
+        ))
+      );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [settings]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -144,7 +141,7 @@ const Forms = ({
             <option disabled={false} value="">
               Valitse operaattori
             </option>
-            {operators.map((service) => (
+            {operator.map((service) => (
               <option
                 key={`${service.pricePerMin},${service.name},${service.startPrice}`}
                 value={service.pricePerMin}
