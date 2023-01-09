@@ -65,9 +65,8 @@ https://github.com/jjonez96/scootdata
 
 ## Issues
 
-There are alot of problems what im trying to solve yet for example scoot locations. Other issues are listed in Github issues section.
+There are still alot of problems what im trying to solve yet for example scoot locations. Other issues are listed in Github issues section.
 
-Feel free to contribute if this project spiked you interested!
 
 ## What i´ve learned so far?
 
@@ -101,6 +100,7 @@ Feel free to contribute if this project spiked you interested!
 - Making own customhooks.
 - Algorithm for the scoot price.
 - Changing the codebase form CRA to Next.js.
+- Performance issue handling(minimizing api loading time. Next.js useSWR hook).
 - Git commands (commit, push and pull).
 - npm commands (Adding dependencies, npm start and npm run build).
 
