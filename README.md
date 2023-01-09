@@ -7,7 +7,7 @@ Scootlator is really handy and fast single page application(SPA) to calculate e-
 <br>
 <b>Preview:</b> <br>
 https://scootlator.vercel.app <br> <br>
-![image](https://user-images.githubusercontent.com/90967564/210266025-5084e46f-39ae-4b86-b3f6-9e6b233f0d30.png)
+![image](https://user-images.githubusercontent.com/90967564/211286583-82102c7b-2e63-4634-a70b-598f7f9b8a38.png)
 
 ## Tech Stack:
 
@@ -65,9 +65,8 @@ https://github.com/jjonez96/scootdata
 
 ## Issues
 
-There are alot of problems what im trying to solve yet for example scoot locations. Other issues are listed in Github issues section.
+There are still alot of problems what im trying to solve yet for example scoot locations. Other issues are listed in Github issues section.
 
-Feel free to contribute if this project spiked you interested!
 
 ## What i´ve learned so far?
 
@@ -101,6 +100,7 @@ Feel free to contribute if this project spiked you interested!
 - Making own customhooks.
 - Algorithm for the scoot price.
 - Changing the codebase form CRA to Next.js.
+- Performance issue handling(minimizing api loading time. Next.js useSWR hook).
 - Git commands (commit, push and pull).
 - npm commands (Adding dependencies, npm start and npm run build).
 
