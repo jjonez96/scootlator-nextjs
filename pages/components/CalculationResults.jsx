@@ -32,7 +32,7 @@ const CalculationResults = ({ price, distance, duration }) => {
           </div>
           {price === "1 €" || price === "1.44 €" || price === "NaN €" ? (
             <Alert className="alertt p-1 mt-2" variant="danger">
-              Palvelua ei valittu
+              Hintaa ei valittu.
             </Alert>
           ) : (
             <div className="m-1 d-flex justify-content-around ">

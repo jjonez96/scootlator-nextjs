@@ -74,7 +74,7 @@ const Forms = ({
 
   return (
     <div className="customBg fixed-top shadow p-1 container-fluid ">
-      <h6 className="ss text-info">Laske skuutti matka</h6>
+      <h6 className="text-center text-info">Laske skuutti matka</h6>
       <Form className="hstack gap-1 row" onSubmit={handleFormSubmit}>
         <Form.Group className="form-floating was-validated col-auto formWidth">
           <Form.Control
@@ -142,7 +142,7 @@ const Forms = ({
             required
           >
             <option value="" disabled={false}>
-              Valitse operaattori
+              Valitse hinta
             </option>
 
             {operators.map((service) => (
