@@ -8,7 +8,7 @@ import Spinner from "react-bootstrap/Spinner";
 import useSWR from "swr";
 import useScootData from "../../hooks/useScootData";
 
-const VoiMarkers = ({ originRef, destinationRef, geocodeJson, clusterer }) => {
+const VoiMarkers = ({ originRef, geocodeJson, clusterer }) => {
   const [selectedMarker, setSelectedMarker] = useState("");
   const total = useScootData();
 
@@ -55,7 +55,6 @@ const VoiMarkers = ({ originRef, destinationRef, geocodeJson, clusterer }) => {
           position={marker}
           onClick={() => {
             setSelectedMarker(marker);
-            destinationRef.current.value = "";
           }}
         />
       ))}

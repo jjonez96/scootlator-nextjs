@@ -19,13 +19,16 @@ const useGeoLocation = () => {
   const onError = (error) => {
     setLocation({
       loaded: false,
+      coordinates: {
+        lat: 60.192059,
+        lng: 24.945831,
+      },
       error: {
         code: error.code,
         message: error.message,
       },
     });
   };
-
   useEffect(() => {
     const options = {
       enableHighAccuracy: true,

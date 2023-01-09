@@ -41,12 +41,6 @@ export default function Home() {
   /** User gps coordinates */
   const location = useGeoLocation();
   const center = location.coordinates;
-  const defaultBounds = {
-    north: center.lat + 0.1,
-    south: center.lat - 0.1,
-    east: center.lng + 0.1,
-    west: center.lng - 0.1,
-  };
 
   /** Operator selector */
   const operator = useOperators();
@@ -144,12 +138,11 @@ export default function Home() {
           destinationRef={destinationRef}
           map={map}
           clearRoute={clearRoute}
-          center={center}
           selectInputRef={selectInputRef}
           calculateRoute={calculateRoute}
           handleScootMarkers={handleScootMarkers}
           onOffMarkers={onOffMarkers}
-          defaultBounds={defaultBounds}
+          geocodeJson={geocodeJson}
         />
         <CalculationResults
           duration={duration}
@@ -179,21 +172,31 @@ export default function Home() {
           }}
           onLoad={(map) => setMap(map)}
         >
-          {onOffMarkers === false ? (
-            <div style={{ display: "none" }}></div>
-          ) : (
-            <div className="hideload">
-              <TierMarkers
-                originRef={originRef}
-                destinationRef={destinationRef}
-                geocodeJson={geocodeJson}
-              />
-              <VoiMarkers
-                originRef={originRef}
-                destinationRef={destinationRef}
-                geocodeJson={geocodeJson}
-              />
-            </div>
+          {onOffMarkers === false ? null : (
+            <MarkerClusterer
+              options={{
+                styles: clusterStyles,
+                gridSize: 60,
+                maxZoom: 17,
+              }}
+            >
+              {(clusterer) => (
+                <div className="hideload" loading="lazy">
+                  <TierMarkers
+                    originRef={originRef}
+                    destinationRef={destinationRef}
+                    geocodeJson={geocodeJson}
+                    clusterer={clusterer}
+                  />
+                  <VoiMarkers
+                    originRef={originRef}
+                    destinationRef={destinationRef}
+                    geocodeJson={geocodeJson}
+                    clusterer={clusterer}
+                  />
+                </div>
+              )}
+            </MarkerClusterer>
           )}
           <Marker position={center} icon={markerIcons[0]} />
           {directionResponse && (

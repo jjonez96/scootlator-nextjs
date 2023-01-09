@@ -5,22 +5,31 @@ import TierMarkers from "./TierMarkers";
 import { FaTimes } from "react-icons/fa";
 import VoiMarkers from "./VoiMarkers";
 import useOperators from "../../hooks/useOperators";
+import useGeoLocation from "../../hooks/useGeoLocation";
+
 const Forms = ({
   originRef,
   destinationRef,
-  center,
   calculateRoute,
   onOffMarkers,
   handleScootMarkers,
   map,
   selectInputRef,
+  geocodeJson,
   setSelected,
   clearRoute,
-  defaultBounds,
 }) => {
   const autocompleteRef = useRef();
   const operators = useOperators();
+  const location = useGeoLocation();
 
+  const center = location.coordinates;
+  const defaultBounds = {
+    north: center.lat + 0.1,
+    south: center.lat - 0.1,
+    east: center.lng + 0.1,
+    west: center.lng - 0.1,
+  };
   const settings = {
     componentRestrictions: { country: "fi" },
     fields: ["place_id", "geometry", "formatted_address", "name"],
@@ -53,7 +62,6 @@ const Forms = ({
   };
 
   /**Click handler for changing coordinates to address*/
-  const geocodeJson = "https://maps.googleapis.com/maps/api/geocode/json";
   const handleOriginClick = () => {
     const url = `${geocodeJson}?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&latlng=${center.lat},${center.lng}`;
     fetch(url)
