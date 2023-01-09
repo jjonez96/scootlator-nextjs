@@ -7,7 +7,7 @@ Scootlator is really handy and fast single page application(SPA) to calculate e-
 <br>
 <b>Preview:</b> <br>
 https://scootlator.vercel.app <br> <br>
-![image](https://user-images.githubusercontent.com/90967564/210266025-5084e46f-39ae-4b86-b3f6-9e6b233f0d30.png)
+![image](https://user-images.githubusercontent.com/90967564/211286583-82102c7b-2e63-4634-a70b-598f7f9b8a38.png)
 
 ## Tech Stack:
 
