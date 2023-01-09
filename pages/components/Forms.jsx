@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button, Form, Dropdown } from "react-bootstrap";
 import { MdClose, MdMyLocation, MdElectricScooter } from "react-icons/md";
 import TierMarkers from "./TierMarkers";
@@ -134,15 +134,17 @@ const Forms = ({
               </div>
             ) : null}
           </Dropdown>
+
           <Form.Select
             className="form-control text-light bg-dark w-75"
             ref={selectInputRef}
             onChange={(e) => setSelected(e.target.value)}
             required
           >
-            <option disabled={false} value="">
+            <option value="" disabled={false}>
               Valitse operaattori
             </option>
+
             {operators.map((service) => (
               <option
                 key={`${service.pricePerMin},${service.name},${service.startPrice}`}
@@ -153,6 +155,7 @@ const Forms = ({
               </option>
             ))}
           </Form.Select>
+
           <Button
             className="mx-2 fw-bold text-dark"
             variant="danger"

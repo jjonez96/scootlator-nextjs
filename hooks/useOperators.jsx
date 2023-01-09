@@ -29,6 +29,50 @@ const useOperators = () => {
       pricePerMin: 0.22,
       startPrice: 1,
     },
+    {
+      pricePerMin: 0.2,
+      startPrice: 1,
+    },
+    {
+      pricePerMin: 0.21,
+      startPrice: 1,
+    },
+    {
+      pricePerMin: 0.22,
+      startPrice: 1,
+    },
+    {
+      pricePerMin: 0.23,
+      startPrice: 1,
+    },
+    {
+      pricePerMin: 0.24,
+      startPrice: 1,
+    },
+    {
+      pricePerMin: 0.25,
+      startPrice: 1,
+    },
+    {
+      pricePerMin: 0.26,
+      startPrice: 1,
+    },
+    {
+      pricePerMin: 0.27,
+      startPrice: 1,
+    },
+    {
+      pricePerMin: 0.28,
+      startPrice: 1,
+    },
+    {
+      pricePerMin: 0.29,
+      startPrice: 1,
+    },
+    {
+      pricePerMin: 0.3,
+      startPrice: 1,
+    },
   ];
 
   return services;

@@ -6,11 +6,9 @@ import { IoBatteryCharging } from "react-icons/io5";
 import markerIcons from "../../styles/markerIcons.json";
 import Spinner from "react-bootstrap/Spinner";
 import useSWR from "swr";
-import useScootData from "../../hooks/useScootData";
 
-const VoiMarkers = ({ originRef, geocodeJson, clusterer }) => {
+const VoiMarkers = ({ originRef, geocodeJson, destinationRef, clusterer }) => {
   const [selectedMarker, setSelectedMarker] = useState("");
-  const total = useScootData();
 
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -18,8 +16,8 @@ const VoiMarkers = ({ originRef, geocodeJson, clusterer }) => {
     "https://scootdata.cyclic.app/api/voi",
     fetcher
   );
-  if (error) return <div className="loading">Hups jokin meni pieleen.</div>;
 
+  if (error) return <div className="loading">Hups jokin meni pieleen.</div>;
   if (!data)
     return (
       <div className="loading">
@@ -45,7 +43,6 @@ const VoiMarkers = ({ originRef, geocodeJson, clusterer }) => {
 
   return (
     <>
-      <p className="loadingText">Skuutteja löytyi: {total}</p>
       {data.map((marker, id) => (
         <Marker
           icon={markerIcons[1]}
@@ -55,6 +52,7 @@ const VoiMarkers = ({ originRef, geocodeJson, clusterer }) => {
           position={marker}
           onClick={() => {
             setSelectedMarker(marker);
+            destinationRef.current.value = "";
           }}
         />
       ))}

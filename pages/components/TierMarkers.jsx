@@ -7,7 +7,7 @@ import Spinner from "react-bootstrap/Spinner";
 import markerIcons from "../../styles/markerIcons.json";
 import useSWR from "swr";
 
-const TierMarkers = ({ originRef, geocodeJson, clusterer }) => {
+const TierMarkers = ({ originRef, destinationRef, geocodeJson, clusterer }) => {
   const [selectedMarker, setSelectedMarker] = useState("");
 
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
@@ -16,6 +16,7 @@ const TierMarkers = ({ originRef, geocodeJson, clusterer }) => {
     "https://scootdata.cyclic.app/api/tier",
     fetcher
   );
+
   if (error) return <div className="loading">Hups jokin meni pieleen.</div>;
   if (!data)
     return (
@@ -51,6 +52,7 @@ const TierMarkers = ({ originRef, geocodeJson, clusterer }) => {
           position={marker}
           onClick={() => {
             setSelectedMarker(marker);
+            destinationRef.current.value = "";
           }}
         />
       ))}
