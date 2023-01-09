@@ -128,7 +128,7 @@ label {
 }
 @media only screen and (max-width: 1000px) {
   .map-container {
-    height: 99.9vh;
+    height: 97vh;
   }
 }
 .combobox-input {
