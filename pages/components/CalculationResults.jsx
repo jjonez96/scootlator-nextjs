@@ -9,7 +9,7 @@ const CalculationResults = ({ price, distance, duration }) => {
   if (int > 20) {
     return (
       <Alert
-        className="resultsBg container fixed-bottom d-flex justify-content-center"
+        className="resultsContainer container fixed-bottom d-flex justify-content-center"
         variant="danger"
       >
         Matkasi on liian pitkä.
@@ -20,7 +20,7 @@ const CalculationResults = ({ price, distance, duration }) => {
   return (
     <>
       {price === "" ? null : (
-        <div className="resultsBg bg-dark text-light container-fluid fixed-bottom d-flex justify-content-around shadow ">
+        <div className="resultsContainer bg-dark text-light container-fluid fixed-bottom d-flex justify-content-around shadow ">
           <div className="m-1">
             Pituus <RiPinDistanceFill color="#0dcaf0" />
             <br />

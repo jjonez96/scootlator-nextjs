@@ -5,62 +5,45 @@ body {
   margin: 0px;
   overflow-x: hidden;
   overflow-y: hidden;
-  scroll-behavior: smooth;
   background-color: #303030;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.btn-outline-primary {
-  color: #000;
-}
-.customBg {
-  border-bottom-left-radius: 25px;
-  border-bottom-right-radius: 25px;
-  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(7.4px);
-  -webkit-backdrop-filter: blur(3.4px);
-  width: 55% !important;
-}
-
-@media only screen and (max-width: 1200px) {
-  .customBg {
-    width: 100% !important;
-  }
-}
-
+/* Form loading spinner position*/
 .loading {
   position: fixed;
   top: 6px;
-  right: 15px;
+  left: 15px;
+  width: 70%;
 }
-.loadingText {
-  position: fixed;
-  top: 3px;
-  right: 5px;
-  color: #0dcaf0;
-  font-size: 15px;
-}
-
 .hideload {
   display: none;
 }
 
-.resultsBg {
-  width: 45% !important;
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
+/* Form origin/destination buttons */
+.icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  height: 20px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+/* Input label postions */
+label {
+  position: relative;
+  top: -9px !important;
+  left: 10px !important;
+}
+
+/* orign/destination input width/height */
+.input-width {
+  width: 49.6% !important;
 }
 @media only screen and (max-width: 900px) {
-  .resultsBg {
+  .input-width {
     width: 100% !important;
   }
 }
@@ -77,12 +60,69 @@ a {
   }
 }
 
+/* Form calculate button styles */
+.calculateBtn {
+  border-bottom-left-radius: 25px !important;
+  border-bottom-right-radius: 25px !important;
+  position: relative;
+  top: 4.5px;
+  width: 98% !important;
+}
+@media only screen and (max-width: 600px) {
+  .calculateBtn {
+    width: 95% !important;
+  }
+}
+
+/* Form scootbutton dropdown arrow off */
+.dropdown-toggle::after {
+  content: none !important;
+}
+
+/* Form scootbutton on/off switch colors */
+.form-switch .form-check-input {
+  background-color: #fff !important;
+  box-shadow: none !important;
+  border: transparent;
+}
+.form-switch .form-check-input:checked {
+  background-color: #0dcafe !important;
+}
+
+/* Form background */
+.formContainer {
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(7.4px);
+  -webkit-backdrop-filter: blur(3.4px);
+  width: 55% !important;
+}
+@media only screen and (max-width: 1200px) {
+  .formContainer {
+    width: 100% !important;
+  }
+}
+
+/* Calculationresults styles */
+.resultsContainer {
+  width: 45% !important;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+@media only screen and (max-width: 900px) {
+  .resultsContainer {
+    width: 100% !important;
+  }
+}
+
+/* googlemap autocomplete styles */
 .pac-container {
   background-color: #212529;
   box-shadow: none;
   z-index: 1051 !important;
 }
-
 .pac-matched {
   color: red;
 }
@@ -118,11 +158,7 @@ a {
   color: rgb(255, 0, 0);
 }
 
-label {
-  position: relative;
-  top: -9px !important;
-  left: 10px !important;
-}
+/* googlemap responsiveness */
 .map-container {
   width: 100%;
   height: 100vh;
@@ -132,34 +168,8 @@ label {
     height: 96vh;
   }
 }
-.combobox-input {
-  width: 20%;
-  padding: 0.5rem;
-}
-.overlay {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
-  top: 47%;
-  right: 50px;
-}
 
-.icon {
-  height: 1.5rem;
-  width: 1.5rem;
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  height: 20px;
-  transform: translateY(-50%);
-  cursor: pointer;
-}
-a[href^="http://maps.google.com/maps"]
-{
-  display: none !important;
-}
-
+/* Googlemap bottomright prints off */
 .gmnoprint a,
 .gmnoprint span,
 .gm-style-cc {
@@ -168,9 +178,8 @@ a[href^="http://maps.google.com/maps"]
 .gmnoprint div {
   background: none !important;
 }
-.icon:hover {
-  color: green;
-}
+
+/* goolgemap infowindow styles */
 .gm-iw {
   color: #0dcafe !important;
 }
@@ -182,10 +191,19 @@ a[href^="http://maps.google.com/maps"]
   color: #0dcaf0 !important;
 }
 .gm-style .gm-style-iw-tc::after {
-  background: #a0a0a0;
+  background: #212529;
 }
 button.gm-ui-hover-effect > span {
   background-color: #0dcaf0 !important;
+}
+
+/* Scoot marker styles */
+.markBtns {
+  margin-left: 6px;
+}
+.vuokraa {
+  text-decoration: none;
+  color: #000;
 }
 .voiheading {
   color: #f46c63;
@@ -195,58 +213,8 @@ button.gm-ui-hover-effect > span {
   color: #00ffe5;
   font-size: 18px;
 }
-.vuokraa {
-  text-decoration: none;
-  color: #000;
-}
-.vuokraa:hover {
-  color: #000;
-}
-
-.markBtns {
-  margin-left: 6px;
-}
 .battery {
   position: relative;
   top: 1px;
   font-weight: 400;
-}
-.alertt {
-  position: relative;
-  top: 3px;
-}
-.custombtn {
-  border-bottom-left-radius: 25px !important;
-  border-bottom-right-radius: 25px !important;
-  position: relative;
-  top: 4.5px;
-  width: 98% !important;
-}
-
-@media only screen and (max-width: 600px) {
-  .custombtn {
-    width: 95% !important;
-  }
-}
-
-.dropdown-toggle::after {
-  content: none !important;
-}
-
-.formWidth {
-  width: 49.6% !important;
-}
-@media only screen and (max-width: 900px) {
-  .formWidth {
-    width: 100% !important;
-  }
-}
-
-.form-switch .form-check-input {
-  background-color: #fff !important;
-  box-shadow: none !important;
-  border: transparent;
-}
-.form-switch .form-check-input:checked {
-  background-color: #0dcafe !important;
 }

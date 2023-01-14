@@ -73,10 +73,10 @@ const Forms = ({
   };
 
   return (
-    <div className="customBg fixed-top shadow p-1 container-fluid ">
+    <div className="formContainer fixed-top shadow p-1 container-fluid ">
       <h6 className="text-center text-info">Laske skuutti matka</h6>
       <Form className="hstack gap-1 row" onSubmit={handleFormSubmit}>
-        <Form.Group className="form-floating was-validated col-auto formWidth">
+        <Form.Group className="form-floating was-validated col-auto input-width">
           <Form.Control
             className="input-height bg-dark text-light"
             type="text"
@@ -95,7 +95,7 @@ const Forms = ({
             }}
           />
         </Form.Group>
-        <Form.Group className="was-validated form-floating col-auto container formWidth">
+        <Form.Group className="was-validated form-floating col-auto container input-width">
           <Form.Control
             className="input-height bg-dark text-light"
             type="text"
@@ -167,7 +167,7 @@ const Forms = ({
         <Button
           variant="info"
           type="submit"
-          className="custombtn container p-1 fw-bold"
+          className="calculateBtn container p-1 fw-bold"
           onClick={calculateRoute}
         >
           Laske

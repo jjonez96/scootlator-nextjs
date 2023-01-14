@@ -18,17 +18,7 @@ const VoiMarkers = ({ originRef, geocodeJson, destinationRef, clusterer }) => {
   );
 
   if (error) return <div className="loading">Hups jokin meni pieleen.</div>;
-  if (!data)
-    return (
-      <div className="loading">
-        <Spinner
-          animation="border"
-          variant="info"
-          size="sm"
-          className="loading"
-        />
-      </div>
-    );
+  if (!data) return <Spinner variant="info" size="sm" className="loading" />;
 
   /**Click handler for changing coordinates to address(passing address to origin input)*/
   const handleScootLocationClick = () => {

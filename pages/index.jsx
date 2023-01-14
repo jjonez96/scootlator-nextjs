@@ -181,7 +181,7 @@ export default function Home() {
               }}
             >
               {(clusterer) => (
-                <div className="hideload" loading="lazy">
+                <div className="hideload">
                   <TierMarkers
                     originRef={originRef}
                     destinationRef={destinationRef}
