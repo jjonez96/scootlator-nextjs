@@ -28,7 +28,7 @@ export default function Home() {
   const [duration, setDuration] = useState("");
   const [price, setPrice] = useState("");
   const [libraries] = useState(["places"]);
-  const [selected, setSelected] = useState();
+  const [selected, setSelected] = useState(0.2);
 
   /** Refs */
   /** @type React.MutableRefObject<HTMLInputElement> */
@@ -45,8 +45,8 @@ export default function Home() {
   /** Operator selector */
   const operator = useOperators();
   const rentalStartPrice = operator.map((e) => e.startPrice);
-  const startPrice = parseInt(rentalStartPrice);
 
+  const startPrice = parseInt(rentalStartPrice);
   const calculateRoute = async () => {
     const directionService = new google.maps.DirectionsService();
     const results = await directionService.route({
@@ -58,7 +58,6 @@ export default function Home() {
     setDirectionResponse(results);
     setDistance(results.routes[0].legs[0].distance.text);
     setDuration(results.routes[0].legs[0].duration.text);
-
     /** If its night then pricing will be increased */
     const hours = new Date().getHours();
     const isDayTime = hours >= 6 && hours < 22;
@@ -102,7 +101,7 @@ export default function Home() {
     setPrice("");
     map.panTo(center);
     map.setZoom(12 - 6);
-    setSelected(0);
+    setSelected(0.2);
     selectInputRef.current.value = "";
     destinationRef.current.value = "";
     originRef.current.value = "";
@@ -127,11 +126,11 @@ export default function Home() {
     .forEach((element) => element.remove());
 
   return (
-    <main id="top">
+    <>
       <Head>
         <title>Scootlator</title>
       </Head>
-      <div>
+      <>
         <Forms
           setSelected={setSelected}
           originRef={originRef}
@@ -143,6 +142,7 @@ export default function Home() {
           handleScootMarkers={handleScootMarkers}
           onOffMarkers={onOffMarkers}
           geocodeJson={geocodeJson}
+          selected={selected}
         />
         <CalculationResults
           duration={duration}
@@ -203,7 +203,7 @@ export default function Home() {
             <DirectionsRenderer directions={directionResponse} />
           )}
         </GoogleMap>
-      </div>
-    </main>
+      </>
+    </>
   );
 }

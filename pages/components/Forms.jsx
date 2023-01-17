@@ -4,8 +4,8 @@ import { MdClose, MdMyLocation, MdElectricScooter } from "react-icons/md";
 import TierMarkers from "./TierMarkers";
 import { FaTimes } from "react-icons/fa";
 import VoiMarkers from "./VoiMarkers";
-import useOperators from "../../hooks/useOperators";
 import useGeoLocation from "../../hooks/useGeoLocation";
+import RangeSlider from "react-bootstrap-range-slider";
 
 const Forms = ({
   originRef,
@@ -18,11 +18,10 @@ const Forms = ({
   geocodeJson,
   setSelected,
   clearRoute,
+  selected,
 }) => {
   const autocompleteRef = useRef();
-  const operators = useOperators();
   const location = useGeoLocation();
-
   const center = location.coordinates;
   const defaultBounds = {
     north: center.lat + 0.1,
@@ -30,6 +29,7 @@ const Forms = ({
     east: center.lng + 0.1,
     west: center.lng - 0.1,
   };
+
   const settings = {
     componentRestrictions: { country: "fi" },
     fields: ["place_id", "geometry", "formatted_address", "name"],
@@ -71,10 +71,10 @@ const Forms = ({
         originRef.current.value = `${place.formatted_address}`;
       });
   };
-
   return (
     <div className="formContainer fixed-top shadow p-1 container-fluid ">
       <h6 className="text-center text-info">Laske skuutti matka</h6>
+
       <Form className="hstack gap-1 row" onSubmit={handleFormSubmit}>
         <Form.Group className="form-floating was-validated col-auto input-width">
           <Form.Control
@@ -134,36 +134,33 @@ const Forms = ({
               </div>
             ) : null}
           </Dropdown>
-
-          <Form.Select
-            className="form-control text-light bg-dark w-75"
-            ref={selectInputRef}
-            onChange={(e) => setSelected(e.target.value)}
-            required
-          >
-            <option value="" disabled={false}>
-              Valitse hinta
-            </option>
-
-            {operators.map((service) => (
-              <option
-                key={`${service.pricePerMin},${service.name},${service.startPrice}`}
-                value={service.pricePerMin}
-              >
-                {service.name} {service.pricePerMin}€/min + {service.startPrice}
-                € aloitusmaksu
-              </option>
-            ))}
-          </Form.Select>
-
+          <Form.Group className="form-floating input-width">
+            <RangeSlider
+              className="pt-4 text-dark"
+              onClick={calculateRoute}
+              variant="info"
+              tooltipLabel={(selected) => `${selected}€/min`}
+              onChange={(e) => setSelected(e.target.value)}
+              ref={selectInputRef}
+              value={selected}
+              min={0.1}
+              step={0.01}
+              max={0.9}
+            />
+            <Form.Label className="text-info text-center pt-1 ">
+              Aloitusmaksu 1€ + {selected}
+              €/min
+            </Form.Label>
+          </Form.Group>
           <Button
-            className="mx-2 fw-bold text-dark"
+            className="mx-2 fw-bold text-dark "
             variant="danger"
             onClick={clearRoute}
           >
             <FaTimes />
           </Button>
         </Form.Group>
+
         <Button
           variant="info"
           type="submit"

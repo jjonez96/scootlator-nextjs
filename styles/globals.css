@@ -37,7 +37,28 @@ label {
   top: -9px !important;
   left: 10px !important;
 }
-
+.bgg {
+  background-color: transparent !important;
+  border: none !important;
+}
+.loadingBg {
+  background-color: #212529;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.loadingScreen {
+  position: fixed;
+  width: 100%;
+  top: 45%;
+}
+.bd {
+  background-color: #212529;
+  width: 100% !important;
+  height: 100% !important;
+  position: fixed;
+  z-index: 99999999 !important;
+}
 /* orign/destination input width/height */
 .input-width {
   width: 49.6% !important;
