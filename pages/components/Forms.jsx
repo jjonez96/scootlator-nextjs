@@ -137,7 +137,7 @@ const Forms = ({
           <Form.Group className="form-floating input-width">
             <RangeSlider
               className="pt-4 text-dark"
-              onInput={calculateRoute}
+              onClick={calculateRoute}
               variant="info"
               tooltipLabel={(selected) => `${selected}€/min`}
               onChange={(e) => setSelected(e.target.value)}
