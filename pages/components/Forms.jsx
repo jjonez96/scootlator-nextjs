@@ -137,7 +137,7 @@ const Forms = ({
           <Form.Group className="form-floating input-width">
             <RangeSlider
               className="pt-4 text-dark"
-              onClick={calculateRoute}
+              onInput={calculateRoute}
               variant="info"
               tooltipLabel={(selected) => `${selected}€/min`}
               onChange={(e) => setSelected(e.target.value)}
@@ -147,7 +147,7 @@ const Forms = ({
               step={0.01}
               max={0.9}
             />
-            <Form.Label className="text-info text-center pt-1 ">
+            <Form.Label className="text-info rangeLabel pt-1 ">
               Aloitusmaksu 1€ + {selected}
               €/min
             </Form.Label>
