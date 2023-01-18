@@ -37,21 +37,6 @@ label {
   top: -9px !important;
   left: 10px !important;
 }
-.rangeLabel {
-  text-align: center !important;
-}
-@media only screen and (max-width: 900px) {
-  .rangeLabel {
-    text-align: left !important;
-    position: absolute !important;
-    left: -12px !important;
-    font-size: 15px;
-  }
-}
-.bgg {
-  background-color: transparent !important;
-  border: none !important;
-}
 .loadingBg {
   background-color: #212529;
   width: 100%;
