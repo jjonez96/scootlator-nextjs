@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { useRef, useState } from "react";
 import useGeoLocation from "../hooks/useGeoLocation";
-import useOperators from "../hooks/useOperators";
 import LoadingScreen from "./components/LoadingScreen";
 import CalculationResults from "./components/CalculationResults";
 import Forms from "./components/Forms";
@@ -29,6 +28,7 @@ export default function Home() {
   const [price, setPrice] = useState("");
   const [libraries] = useState(["places"]);
   const [selected, setSelected] = useState();
+  const [otherPrice, setOtherPrice] = useState(true);
 
   /** Refs */
   /** @type React.MutableRefObject<HTMLInputElement> */
@@ -43,10 +43,6 @@ export default function Home() {
   const center = location.coordinates;
 
   /** Operator selector */
-  const operator = useOperators();
-  const rentalStartPrice = operator.map((e) => e.startPrice);
-  const startPrice = parseInt(rentalStartPrice);
-
   const calculateRoute = async () => {
     const directionService = new google.maps.DirectionsService();
     const results = await directionService.route({
@@ -59,18 +55,16 @@ export default function Home() {
     setDistance(results.routes[0].legs[0].distance.text);
     setDuration(results.routes[0].legs[0].duration.text);
 
-    /** If its night then pricing will be increased */
+    /** If its night time then pricing will be increased */
     const hours = new Date().getHours();
     const isDayTime = hours >= 6 && hours < 22;
     if (isDayTime === true) {
       setPrice(
-        startPrice +
-          parseInt(results.routes[0].legs[0].duration.text) * selected +
-          " €"
+        1 + parseInt(results.routes[0].legs[0].duration.text) * selected + " €"
       );
     } else {
       setPrice(
-        startPrice +
+        1 +
           0.44 +
           parseInt(results.routes[0].legs[0].duration.text) * selected +
           " €",
@@ -113,14 +107,18 @@ export default function Home() {
     libraries,
   });
 
-  /** Scoot markers on/off switch */
-  const handleScootMarkers = (event) => {
+  /** Settings on/off switches */
+  const handleScootMarkers = () => {
     setOnOffMarkers((current) => !current);
+  };
+  const handleNumberInput = () => {
+    setOtherPrice((current) => !current);
   };
 
   if (!isLoaded) {
     return <LoadingScreen />;
   }
+
   /** Removes unwanted elements from body */
   document
     .querySelectorAll(".pac-container")
@@ -134,6 +132,9 @@ export default function Home() {
       <div>
         <Forms
           setSelected={setSelected}
+          selected={selected}
+          handleNumberInput={handleNumberInput}
+          otherPrice={otherPrice}
           originRef={originRef}
           destinationRef={destinationRef}
           map={map}

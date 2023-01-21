@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Button, Form, Dropdown } from "react-bootstrap";
-import { MdClose, MdMyLocation, MdElectricScooter } from "react-icons/md";
+import { MdClose, MdMyLocation } from "react-icons/md";
+import { FiSettings } from "react-icons/fi";
 import TierMarkers from "./TierMarkers";
 import { FaTimes } from "react-icons/fa";
 import VoiMarkers from "./VoiMarkers";
@@ -17,7 +18,10 @@ const Forms = ({
   selectInputRef,
   geocodeJson,
   setSelected,
+  selected,
   clearRoute,
+  handleNumberInput,
+  otherPrice,
 }) => {
   const autocompleteRef = useRef();
   const operators = useOperators();
@@ -71,7 +75,6 @@ const Forms = ({
         originRef.current.value = `${place.formatted_address}`;
       });
   };
-
   return (
     <div className="formContainer fixed-top shadow p-1 container-fluid ">
       <h6 className="text-center text-info">Laske skuutti matka</h6>
@@ -112,10 +115,10 @@ const Forms = ({
             }}
           />
         </Form.Group>
-        <Form.Group className="d-flex justify-content-center was-validated">
+        <Form.Group className="d-flex justify-content-center was-validated adjust">
           <Dropdown>
             <Dropdown.Toggle className="mx-2 btn btn-info ">
-              <MdElectricScooter className="text-dark" />
+              <FiSettings className="text-dark" />
             </Dropdown.Toggle>
             <Dropdown.Menu className="bg-dark text-center text-light">
               Scootit kartassa
@@ -126,6 +129,14 @@ const Forms = ({
                 id=""
                 defaultChecked={onOffMarkers}
               />
+              <hr className="text-info" />
+              Muu hinta
+              <Form.Check
+                type="switch"
+                onChange={handleNumberInput}
+                value={otherPrice}
+                id=""
+              />
             </Dropdown.Menu>
             {onOffMarkers === true ? (
               <div>
@@ -135,35 +146,55 @@ const Forms = ({
             ) : null}
           </Dropdown>
 
-          <Form.Select
-            className="form-control text-light bg-dark w-75"
-            ref={selectInputRef}
-            onChange={(e) => setSelected(e.target.value)}
-            required
-          >
-            <option value="" disabled={false}>
-              Valitse hinta
-            </option>
-
-            {operators.map((service) => (
-              <option
-                key={`${service.pricePerMin},${service.name},${service.startPrice}`}
-                value={service.pricePerMin}
-              >
-                {service.name} {service.pricePerMin}€/min + {service.startPrice}
-                € aloitusmaksu
+          {otherPrice === true ? (
+            <Form.Select
+              className="form-control text-light bg-dark  priceSelect "
+              ref={selectInputRef}
+              onChange={(e) => setSelected(e.target.value)}
+              required
+            >
+              <option value="" disabled={false}>
+                Valitse hinta
               </option>
-            ))}
-          </Form.Select>
 
+              {operators.map((service) => (
+                <option
+                  key={`${service.pricePerMin},${service.name},${service.startPrice}`}
+                  value={service.pricePerMin}
+                >
+                  {service.name} {service.pricePerMin}€/min +{" "}
+                  {service.startPrice}€ aloitusmaksu
+                </option>
+              ))}
+            </Form.Select>
+          ) : (
+            <Form.Group className="was-validated form-floating priceSelect">
+              <Form.Control
+                className="input-height bg-dark text-light text-center "
+                type="number"
+                ref={selectInputRef}
+                onChange={(e) => setSelected(e.target.value)}
+                onClick={(e) => setSelected(e.target.value)}
+                defaultValue={0.1}
+                min={0.1}
+                step={0.01}
+                max={0.9}
+                required
+              />
+              <Form.Label className="text-light text-center btn-success ">
+                {selected}€/min + 1€
+              </Form.Label>
+            </Form.Group>
+          )}
           <Button
-            className="mx-2 fw-bold text-dark"
+            className="mx-2 fw-bold text-dark "
             variant="danger"
             onClick={clearRoute}
           >
             <FaTimes />
           </Button>
         </Form.Group>
+
         <Button
           variant="info"
           type="submit"

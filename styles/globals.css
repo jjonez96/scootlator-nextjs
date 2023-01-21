@@ -48,13 +48,31 @@ label {
   width: 100%;
   top: 45%;
 }
-.bd {
-  background-color: #212529;
-  width: 100% !important;
-  height: 100% !important;
-  position: fixed;
-  z-index: 99999999 !important;
+
+/* Alert if price is not selected */
+.priceAlert {
+  position: relative;
+  top: 4px !important;
 }
+
+/* Price inputs responsiveness */
+.priceSelect {
+  width: 50% !important;
+}
+@media only screen and (max-width: 900px) {
+  .priceSelect {
+    width: 100% !important;
+  }
+}
+.adjust {
+  margin-left: 20px;
+}
+@media only screen and (max-width: 900px) {
+  .adjust {
+    margin-left: 0px;
+  }
+}
+
 /* orign/destination input width/height */
 .input-width {
   width: 49.6% !important;
