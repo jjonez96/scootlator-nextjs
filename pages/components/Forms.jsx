@@ -168,7 +168,7 @@ const Forms = ({
               ))}
             </Form.Select>
           ) : (
-            <Form.Group className="was-validated form-floating priceSelect">
+            <Form.Group className=" form-floating priceSelect">
               <Form.Control
                 className="input-height bg-dark text-light text-center "
                 type="number"
@@ -176,10 +176,7 @@ const Forms = ({
                 onChange={(e) => setSelected(e.target.value)}
                 onClick={(e) => setSelected(e.target.value)}
                 defaultValue={0.1}
-                min={0.1}
                 step={0.01}
-                max={0.9}
-                required
               />
               <Form.Label className="text-light text-center btn-success ">
                 {selected}€/min + 1€
