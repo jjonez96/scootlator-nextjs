@@ -143,6 +143,7 @@ export default function Home() {
           rotateControlOptions: true,
           rotateControl: true,
           styles: mapstyle,
+          gestureHandling: "greedy",
           clickableIcons: false,
           fullscreenControl: false,
           disableDefaultUI: true,
