@@ -9,7 +9,13 @@ You can download the app for your device or use it in the browser.
 <b>Preview:</b> <br>
 https://scootlator.vercel.app <br> <br>
 ![image](https://user-images.githubusercontent.com/90967564/213917687-672d0bf4-51c4-4dab-b674-756a93db15f7.png)
+<br>
+<b>Desktop view</b>
 
+
+![image](https://user-images.githubusercontent.com/90967564/213919431-c5cf2c40-a620-46d8-90bf-b1b35ec6cdcf.png)'
+<br>
+<b>Mobile view</b>
 ## Tech Stack:
 
 ![](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) <br>
