@@ -7,6 +7,7 @@ import { FaTimes } from "react-icons/fa";
 import VoiMarkers from "./VoiMarkers";
 import useOperators from "../../hooks/useOperators";
 import useGeoLocation from "../../hooks/useGeoLocation";
+import Head from "next/head";
 
 const Forms = ({
   originRef,
@@ -76,132 +77,147 @@ const Forms = ({
       });
   };
   return (
-    <div className="formContainer fixed-top shadow p-1 container-fluid ">
-      <h6 className="text-center text-info">Laske skuutti matka</h6>
-      <Form className="hstack gap-1 row" onSubmit={handleFormSubmit}>
-        <Form.Group className="form-floating was-validated col-auto input-width">
-          <Form.Control
-            className="input-height bg-dark text-light"
-            type="text"
-            ref={originRef}
-            required
-          />
-          <Form.Label className="text-light">
-            Valitse lähtöpaikka tai skuutti
-          </Form.Label>
-          <MdMyLocation
-            className="icon text-info bg-dark"
-            onClick={(e) => {
-              map.panTo(center);
-              map.setZoom(18);
-              handleOriginClick(e);
-            }}
-          />
-        </Form.Group>
-        <Form.Group className="was-validated form-floating col-auto container input-width">
-          <Form.Control
-            className="input-height bg-dark text-light"
-            type="text"
-            ref={destinationRef}
-            required
-          />
-          <Form.Label className="text-light ">
-            Valitse määränpää tai klikkaa karttaa
-          </Form.Label>
-          <MdClose
-            className="icon text-info bg-dark icon"
-            onClick={(e) => {
-              clearDestination(e);
-            }}
-          />
-        </Form.Group>
-        <Form.Group className="d-flex justify-content-center was-validated adjust">
-          <Dropdown>
-            <Dropdown.Toggle className="mx-2 btn btn-info ">
-              <FiSettings className="text-dark" />
-            </Dropdown.Toggle>
-            <Dropdown.Menu className="bg-dark text-center text-light">
-              Scootit kartassa
-              <Form.Check
-                type="switch"
-                onChange={handleScootMarkers}
-                value={onOffMarkers}
-                id=""
-                defaultChecked={onOffMarkers}
-              />
-              <hr className="text-info" />
-              Muu hinta
-              <Form.Check
-                type="switch"
-                onChange={handleNumberInput}
-                value={otherPrice}
-                id=""
-              />
-            </Dropdown.Menu>
-            {onOffMarkers === true ? (
-              <div>
-                <VoiMarkers />
-                <TierMarkers />
-              </div>
-            ) : null}
-          </Dropdown>
-
-          {otherPrice === true ? (
-            <Form.Select
-              className="form-control text-light bg-dark  priceSelect "
-              ref={selectInputRef}
-              onChange={(e) => setSelected(e.target.value)}
+    <main>
+      <Head>
+        <meta
+          name="description"
+          content="Sovellus sähköskuuttimatkan hinnan laskemiseen"
+        />
+        <meta
+          name="keywords"
+          content="Scootlator Suomi, Scootlator, paljonko scootti maksaa, Scootti laskin, Skuutti laskin, Sähköscootti laskin, Tier, Voi"
+        />
+        <meta name="Author" content="Joona Luukkonen" />
+        <link href="https://scootlator.vercel.app/" rel="canonical" />
+        <title>Scootlator</title>
+      </Head>
+      <div className="formContainer fixed-top shadow p-1 container-fluid ">
+        <h6 className="text-center text-info">Laske skuutti matka</h6>
+        <Form className="hstack gap-1 row" onSubmit={handleFormSubmit}>
+          <Form.Group className="form-floating was-validated col-auto input-width">
+            <Form.Control
+              className="input-height bg-dark text-light"
+              type="text"
+              ref={originRef}
               required
-            >
-              <option value="" disabled={false}>
-                Valitse hinta
-              </option>
+            />
+            <Form.Label className="text-light">
+              Valitse lähtöpaikka tai skuutti
+            </Form.Label>
+            <MdMyLocation
+              className="icon text-info bg-dark"
+              onClick={(e) => {
+                map.panTo(center);
+                map.setZoom(18);
+                handleOriginClick(e);
+              }}
+            />
+          </Form.Group>
+          <Form.Group className="was-validated form-floating col-auto container input-width">
+            <Form.Control
+              className="input-height bg-dark text-light"
+              type="text"
+              ref={destinationRef}
+              required
+            />
+            <Form.Label className="text-light ">
+              Valitse määränpää tai klikkaa karttaa
+            </Form.Label>
+            <MdClose
+              className="icon text-info bg-dark icon"
+              onClick={(e) => {
+                clearDestination(e);
+              }}
+            />
+          </Form.Group>
+          <Form.Group className="d-flex justify-content-center was-validated adjust">
+            <Dropdown>
+              <Dropdown.Toggle className="mx-2 btn btn-info ">
+                <FiSettings className="text-dark" />
+              </Dropdown.Toggle>
+              <Dropdown.Menu className="bg-dark text-center text-light">
+                Scootit kartassa
+                <Form.Check
+                  type="switch"
+                  onChange={handleScootMarkers}
+                  value={onOffMarkers}
+                  id=""
+                  defaultChecked={onOffMarkers}
+                />
+                <hr className="text-info" />
+                Muu hinta
+                <Form.Check
+                  type="switch"
+                  onChange={handleNumberInput}
+                  value={otherPrice}
+                  id=""
+                />
+              </Dropdown.Menu>
+              {onOffMarkers === true ? (
+                <div>
+                  <VoiMarkers />
+                  <TierMarkers />
+                </div>
+              ) : null}
+            </Dropdown>
 
-              {operators.map((service) => (
-                <option
-                  key={`${service.pricePerMin},${service.name},${service.startPrice}`}
-                  value={service.pricePerMin}
-                >
-                  {service.name} {service.pricePerMin}€/min +{" "}
-                  {service.startPrice}€ aloitusmaksu
-                </option>
-              ))}
-            </Form.Select>
-          ) : (
-            <Form.Group className=" form-floating priceSelect">
-              <Form.Control
-                className="input-height bg-dark text-light text-center "
-                type="number"
+            {otherPrice === true ? (
+              <Form.Select
+                className="form-control text-light bg-dark  priceSelect "
                 ref={selectInputRef}
                 onChange={(e) => setSelected(e.target.value)}
-                onClick={(e) => setSelected(e.target.value)}
-                defaultValue={0.1}
-                step={0.01}
-              />
-              <Form.Label className="text-light text-center btn-success ">
-                {selected}€/min + 1€
-              </Form.Label>
-            </Form.Group>
-          )}
-          <Button
-            className="mx-2 fw-bold text-dark "
-            variant="danger"
-            onClick={clearRoute}
-          >
-            <FaTimes />
-          </Button>
-        </Form.Group>
+                required
+              >
+                <option value="" disabled={false}>
+                  Valitse hinta
+                </option>
 
-        <Button
-          variant="info"
-          type="submit"
-          className="calculateBtn container p-1 fw-bold"
-          onClick={calculateRoute}
-        >
-          Laske
-        </Button>
-      </Form>
-    </div>
+                {operators.map((service) => (
+                  <option
+                    key={`${service.pricePerMin},${service.name},${service.startPrice}`}
+                    value={service.pricePerMin}
+                  >
+                    {service.name} {service.pricePerMin}€/min +{" "}
+                    {service.startPrice}€ aloitusmaksu
+                  </option>
+                ))}
+              </Form.Select>
+            ) : (
+              <Form.Group className=" form-floating priceSelect">
+                <Form.Control
+                  className="input-height bg-dark text-light text-center "
+                  type="number"
+                  ref={selectInputRef}
+                  onChange={(e) => setSelected(e.target.value)}
+                  onClick={(e) => setSelected(e.target.value)}
+                  defaultValue={0.1}
+                  step={0.01}
+                />
+                <Form.Label className="text-light text-center btn-success ">
+                  {selected}€/min + 1€
+                </Form.Label>
+              </Form.Group>
+            )}
+            <Button
+              className="mx-2 fw-bold text-dark "
+              variant="danger"
+              onClick={clearRoute}
+            >
+              <FaTimes />
+            </Button>
+          </Form.Group>
+
+          <Button
+            variant="info"
+            type="submit"
+            className="calculateBtn container p-1 fw-bold"
+            onClick={calculateRoute}
+          >
+            Laske
+          </Button>
+        </Form>
+      </div>
+    </main>
   );
 };
 export default Forms;

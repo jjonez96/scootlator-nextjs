@@ -126,95 +126,80 @@ export default function Home() {
 
   return (
     <main id="top">
-      <Head>
-        <meta
-          name="description"
-          content="Sovellus sähköskuuttimatkan hinnan laskemiseen"
-        />
-        <meta
-          name="keywords"
-          content="Scootlator Suomi, Scootlator, paljonko scootti maksaa, Scootti laskin, Skuutti laskin, Sähköscootti laskin, Tier, Voi"
-        />
-        <meta name="Author" content="Joona Luukkonen" />
-        <link href="https://scootlator.vercel.app/" rel="canonical" />
-        <title>Scootlator</title>
-      </Head>
-      <div>
-        <Forms
-          setSelected={setSelected}
-          selected={selected}
-          handleNumberInput={handleNumberInput}
-          otherPrice={otherPrice}
-          originRef={originRef}
-          destinationRef={destinationRef}
-          map={map}
-          clearRoute={clearRoute}
-          selectInputRef={selectInputRef}
-          calculateRoute={calculateRoute}
-          handleScootMarkers={handleScootMarkers}
-          onOffMarkers={onOffMarkers}
-          geocodeJson={geocodeJson}
-        />
-        <CalculationResults
-          duration={duration}
-          price={price}
-          distance={distance}
-        />
-        <GoogleMap
-          center={center}
-          zoom={12 - 6}
-          ref={mapRef}
-          onClick={(ev) => {
-            handleDestinationMapClick(ev);
-          }}
-          mapContainerClassName="map-container"
-          options={{
-            minZoom: 6 - 1,
-            maxZoom: 6 + 14,
-            zoomControl: false,
-            streetViewControl: false,
-            mapTypeControl: false,
-            rotateControlOptions: true,
-            rotateControl: true,
-            styles: mapstyle,
-            clickableIcons: false,
-            fullscreenControl: false,
-            disableDefaultUI: true,
-          }}
-          onLoad={(map) => setMap(map)}
-        >
-          {onOffMarkers === false ? null : (
-            <MarkerClusterer
-              options={{
-                styles: clusterStyles,
-                gridSize: 60,
-                maxZoom: 17,
-              }}
-            >
-              {(clusterer) => (
-                <div className="hideload">
-                  <TierMarkers
-                    originRef={originRef}
-                    destinationRef={destinationRef}
-                    geocodeJson={geocodeJson}
-                    clusterer={clusterer}
-                  />
-                  <VoiMarkers
-                    originRef={originRef}
-                    destinationRef={destinationRef}
-                    geocodeJson={geocodeJson}
-                    clusterer={clusterer}
-                  />
-                </div>
-              )}
-            </MarkerClusterer>
-          )}
-          <Marker position={center} icon={markerIcons[0]} />
-          {directionResponse && (
-            <DirectionsRenderer directions={directionResponse} />
-          )}
-        </GoogleMap>
-      </div>
+      <GoogleMap
+        center={center}
+        zoom={12 - 6}
+        ref={mapRef}
+        onClick={(ev) => {
+          handleDestinationMapClick(ev);
+        }}
+        mapContainerClassName="map-container"
+        options={{
+          minZoom: 6 - 1,
+          maxZoom: 6 + 14,
+          zoomControl: false,
+          streetViewControl: false,
+          mapTypeControl: false,
+          rotateControlOptions: true,
+          rotateControl: true,
+          styles: mapstyle,
+          clickableIcons: false,
+          fullscreenControl: false,
+          disableDefaultUI: true,
+        }}
+        onLoad={(map) => setMap(map)}
+      >
+        {onOffMarkers === false ? null : (
+          <MarkerClusterer
+            options={{
+              styles: clusterStyles,
+              gridSize: 60,
+              maxZoom: 17,
+            }}
+          >
+            {(clusterer) => (
+              <div className="hideload">
+                <TierMarkers
+                  originRef={originRef}
+                  destinationRef={destinationRef}
+                  geocodeJson={geocodeJson}
+                  clusterer={clusterer}
+                />
+                <VoiMarkers
+                  originRef={originRef}
+                  destinationRef={destinationRef}
+                  geocodeJson={geocodeJson}
+                  clusterer={clusterer}
+                />
+              </div>
+            )}
+          </MarkerClusterer>
+        )}
+        <Marker position={center} icon={markerIcons[0]} />
+        {directionResponse && (
+          <DirectionsRenderer directions={directionResponse} />
+        )}
+      </GoogleMap>
+      <Forms
+        setSelected={setSelected}
+        selected={selected}
+        handleNumberInput={handleNumberInput}
+        otherPrice={otherPrice}
+        originRef={originRef}
+        destinationRef={destinationRef}
+        map={map}
+        clearRoute={clearRoute}
+        selectInputRef={selectInputRef}
+        calculateRoute={calculateRoute}
+        handleScootMarkers={handleScootMarkers}
+        onOffMarkers={onOffMarkers}
+        geocodeJson={geocodeJson}
+      />
+      <CalculationResults
+        duration={duration}
+        price={price}
+        distance={distance}
+      />
     </main>
   );
 }
