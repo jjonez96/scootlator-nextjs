@@ -63,7 +63,7 @@ Right side that red button will reset the whole app. <br>
 
 Scoot trip price comes from minuteprice and startprice. <br> Startprice for operators is usually 1€ in Finland and minuteprice depends what operator you use but the minute pricerange is about 0,20€ - 0,27€.
 
-"Muu hinta" means other price and that changes select input to number input. Then you can write your minuteprice manually.
+"Muu hinta" means other price and that changes select input to number input. Then you can write your minuteprice manually. <br>
 ![image](https://user-images.githubusercontent.com/90967564/213918296-900fa1bc-8b9a-421c-82e1-02c46a3309df.png)
 
 
