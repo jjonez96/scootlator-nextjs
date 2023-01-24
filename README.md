@@ -1,7 +1,7 @@
 # Scootlator
 
 This is typed version of the Scootlator app. Still work in progress. <br>
-Link to old repo: https://github.com/jjonez96/Scootlator
+Link to non typed version: https://github.com/jjonez96/scootlator-nextjs
 
 Scootlator is really handy and fast single page application(SPA) to calculate e-scoot trips such as Tier, Voi, Dott etc.
 <br>
