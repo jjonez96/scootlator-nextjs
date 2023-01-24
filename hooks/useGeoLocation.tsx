@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 
+interface Location {
+  loaded: boolean;
+  coordinates: object;
+}
+
 const useGeoLocation = () => {
-  const [location, setLocation] = useState({
+  const [location, setLocation] = useState<Location>({
     loaded: false,
     coordinates: { lat: 0, lng: 0 },
   });
-
-  const onSuccess = (location) => {
+  const onSuccess = (location: any) => {
     setLocation({
       loaded: true,
       coordinates: {
@@ -16,19 +20,16 @@ const useGeoLocation = () => {
     });
   };
 
-  const onError = (error) => {
+  const onError = () => {
     setLocation({
       loaded: false,
       coordinates: {
         lat: 60.192059,
         lng: 24.945831,
       },
-      error: {
-        code: error.code,
-        message: error.message,
-      },
     });
   };
+
   useEffect(() => {
     const options = {
       enableHighAccuracy: true,

@@ -126,6 +126,19 @@ export default function Home() {
 
   return (
     <main id="top">
+      <Head>
+        <meta
+          name="description"
+          content="Sovellus sähköskuuttimatkan hinnan laskemiseen"
+        />
+        <meta
+          name="keywords"
+          content="Scootlator Suomi, Scootlator, paljonko scootti maksaa, Scootti laskin, Skuutti laskin, Sähköscootti laskin, Tier, Voi"
+        />
+        <meta name="Author" content="Joona Luukkonen" />
+        <link href="https://scootlator.vercel.app/" rel="canonical" />
+        <title>Scootlator</title>
+      </Head>
       <GoogleMap
         center={center}
         zoom={12 - 6}

@@ -78,19 +78,6 @@ const Forms = ({
   };
   return (
     <main>
-      <Head>
-        <meta
-          name="description"
-          content="Sovellus sähköskuuttimatkan hinnan laskemiseen"
-        />
-        <meta
-          name="keywords"
-          content="Scootlator Suomi, Scootlator, paljonko scootti maksaa, Scootti laskin, Skuutti laskin, Sähköscootti laskin, Tier, Voi"
-        />
-        <meta name="Author" content="Joona Luukkonen" />
-        <link href="https://scootlator.vercel.app/" rel="canonical" />
-        <title>Scootlator</title>
-      </Head>
       <div className="formContainer fixed-top shadow p-1 container-fluid ">
         <h6 className="text-center text-info">Laske skuutti matka</h6>
         <Form className="hstack gap-1 row" onSubmit={handleFormSubmit}>
