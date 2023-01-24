@@ -3,6 +3,8 @@
 This is the new version of this app. Old version was build with CRA "Create React App" and this new one is build with Next.js. <br>
 Link to old repo: https://github.com/jjonez96/Scootlator
 
+There is also Typescript version of this app which is still in progress. Check out other branch.
+
 Scootlator is really handy and fast PWA application to calculate e-scoot trips such as Tier, Voi, Dott etc. <br>
 You can download the app for your device or use it in the browser. 
 <br>
