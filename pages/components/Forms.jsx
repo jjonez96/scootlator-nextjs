@@ -119,7 +119,7 @@ const Forms = ({
           </Form.Group>
           <Form.Group className="d-flex justify-content-center was-validated adjust">
             <Dropdown>
-              <Dropdown.Toggle className="mx-2 btn btn-info ">
+              <Dropdown.Toggle className="mx-2 btn btn-info" aria-label="info">
                 <FiSettings className="text-dark" />
               </Dropdown.Toggle>
               <Dropdown.Menu className="bg-dark text-center text-light">
@@ -188,6 +188,7 @@ const Forms = ({
             <Button
               className="mx-2 fw-bold text-dark "
               variant="danger"
+              aria-label="danger"
               onClick={clearRoute}
             >
               <FaTimes />
@@ -197,6 +198,7 @@ const Forms = ({
           <Button
             variant="info"
             type="submit"
+            aria-label="info"
             className="calculateBtn container p-1 fw-bold"
             onClick={calculateRoute}
           >
