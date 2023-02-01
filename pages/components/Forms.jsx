@@ -78,19 +78,6 @@ const Forms = ({
   };
   return (
     <main>
-      <Head>
-        <meta
-          name="description"
-          content="Sovellus sähköskuuttimatkan hinnan laskemiseen"
-        />
-        <meta
-          name="keywords"
-          content="Scootlator Suomi, Scootlator, paljonko scootti maksaa, Scootti laskin, Skuutti laskin, Sähköscootti laskin, Tier, Voi"
-        />
-        <meta name="Author" content="Joona Luukkonen" />
-        <link href="https://scootlator.vercel.app/" rel="canonical" />
-        <title>Scootlator</title>
-      </Head>
       <div className="formContainer fixed-top shadow p-1 container-fluid ">
         <h6 className="text-center text-info">Laske skuutti matka</h6>
         <Form className="hstack gap-1 row" onSubmit={handleFormSubmit}>
@@ -132,7 +119,7 @@ const Forms = ({
           </Form.Group>
           <Form.Group className="d-flex justify-content-center was-validated adjust">
             <Dropdown>
-              <Dropdown.Toggle className="mx-2 btn btn-info ">
+              <Dropdown.Toggle className="mx-2 btn btn-info" aria-label="info">
                 <FiSettings className="text-dark" />
               </Dropdown.Toggle>
               <Dropdown.Menu className="bg-dark text-center text-light">
@@ -201,6 +188,7 @@ const Forms = ({
             <Button
               className="mx-2 fw-bold text-dark "
               variant="danger"
+              aria-label="danger"
               onClick={clearRoute}
             >
               <FaTimes />
@@ -210,6 +198,7 @@ const Forms = ({
           <Button
             variant="info"
             type="submit"
+            aria-label="info"
             className="calculateBtn container p-1 fw-bold"
             onClick={calculateRoute}
           >
