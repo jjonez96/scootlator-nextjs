@@ -1,7 +1,7 @@
 # Scootlator
 
-This is the new version of this app. Old version was build with CRA "Create React App" and this new one is build with Next.js. <br>
-Link to old repo: https://github.com/jjonez96/Scootlator
+This is typed version of the Scootlator app. Still work in progress. <br>
+Link to non typed version: https://github.com/jjonez96/scootlator-nextjs
 
 Scootlator is really handy and fast single page application(SPA) to calculate e-scoot trips such as Tier, Voi, Dott etc.
 <br>
@@ -15,7 +15,8 @@ https://scootlator.vercel.app <br> <br>
 ![](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)<br>
 ![](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white) <br>
 ![](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge) <br>
-![](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
+![](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white) <br>
+![](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 
 ## API's
 
