@@ -3,12 +3,21 @@
 This is the new version of this app. Old version was build with CRA "Create React App" and this new one is build with Next.js. <br>
 Link to old repo: https://github.com/jjonez96/Scootlator
 
-Scootlator is really handy and fast single page application(SPA) to calculate e-scoot trips such as Tier, Voi, Dott etc.
+There is also Typescript version of this app which is still in progress. Check out other branch.
+
+Scootlator is really handy and fast PWA application to calculate e-scoot trips such as Tier, Voi, Dott etc. <br>
+You can download the app for your device or use it in the browser. 
 <br>
 <b>Preview:</b> <br>
 https://scootlator.vercel.app <br> <br>
-![image](https://user-images.githubusercontent.com/90967564/211286583-82102c7b-2e63-4634-a70b-598f7f9b8a38.png)
+![image](https://user-images.githubusercontent.com/90967564/213917687-672d0bf4-51c4-4dab-b674-756a93db15f7.png)
+<br>
+<b>Desktop view</b>
 
+
+![image](https://user-images.githubusercontent.com/90967564/213919431-c5cf2c40-a620-46d8-90bf-b1b35ec6cdcf.png)'
+<br>
+<b>Mobile view</b>
 ## Tech Stack:
 
 ![](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) <br>
@@ -47,16 +56,30 @@ There is different ways to get origin and destination. Mostly used method is to 
 - Location button. This gives you that selected scoot address to origin input.
 - "Vuokraa" means Rent and that button takes you to the Tier or Voi app where you can make the payment.
 
-<br> <br>
+---
+<br>
 
-Blue scoot button in the left disables all scoots in the map and right side that red button will reset the whole app.
+Blue settings button has 2 swtiches. "Scootit kartassa" means Scoots in map which disables all scoots in the map. <br>
+Right side that red button will reset the whole app. <br>
+![image](https://user-images.githubusercontent.com/90967564/213917852-ba892c93-28f4-43e2-8add-a0778ebc3067.png)
 
-![image](https://user-images.githubusercontent.com/90967564/209229803-c6e2eef2-17b0-47cb-a41f-50e4e39fd3ff.png)
-<br> <br>
+Scoot trip price comes from minuteprice and startprice. <br> Startprice for operators is usually 1€ in Finland and minuteprice depends what operator you use but the minute pricerange is about 0,20€ - 0,27€.
+
+"Muu hinta" means other price and that changes select input to number input. Then you can write your minuteprice manually. <br>
+![image](https://user-images.githubusercontent.com/90967564/213918296-900fa1bc-8b9a-421c-82e1-02c46a3309df.png)
+
+
+---
+<br>
 
 When the trip is calculated the app will return you the results like distance, duration and the price of that trip. <br>
 Here in Finland all scoot operators will slow down scoots at night times and the trip price will obviously increase. Price is increased at 10PM - 6AM
+
+
 ![image](https://user-images.githubusercontent.com/90967564/210266547-487ead7b-db42-4cf8-b76b-11d88939dc41.png)
+
+---
+<br>
 
 Scootdata comes from my Node.js backend. It is server to server solution where i do http requests from tier and voiapi. The Node application is hosted to Cyclic.sh.
 
@@ -101,6 +124,7 @@ There are still alot of problems what im trying to solve yet for example scoot l
 - Algorithm for the scoot price.
 - Changing the codebase form CRA to Next.js.
 - Performance issue handling(minimizing api loading time. Next.js useSWR hook).
+- How to Create a PWA With Next.js.
 - Git commands (commit, push and pull).
 - npm commands (Adding dependencies, npm start and npm run build).
 
