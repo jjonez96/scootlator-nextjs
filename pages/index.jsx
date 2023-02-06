@@ -127,6 +127,9 @@ export default function Home() {
 
   return (
     <main id="top">
+      <Head>
+        <title>Scootlator</title>
+      </Head>
       <GoogleMap
         center={center}
         zoom={12 - 6}
