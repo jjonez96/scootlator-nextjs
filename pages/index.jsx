@@ -15,6 +15,7 @@ import {
   GoogleMap,
   Marker,
   MarkerClusterer,
+  MarkerF,
   useJsApiLoader,
 } from "@react-google-maps/api";
 
@@ -176,7 +177,7 @@ export default function Home() {
             )}
           </MarkerClusterer>
         )}
-        <Marker position={center} icon={markerIcons[0]} />
+        <MarkerF position={center} icon={markerIcons[0]} />
         {directionResponse && (
           <DirectionsRenderer directions={directionResponse} />
         )}

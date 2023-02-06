@@ -1,6 +1,6 @@
 import { RiPinDistanceFill, RiPriceTag3Fill, RiTimeFill } from "react-icons/ri";
 import Alert from "react-bootstrap/Alert";
-
+import "animate.css";
 const CalculationResults = ({ price, distance, duration }) => {
   const float = parseFloat(price);
   const int = parseInt(distance);
@@ -20,7 +20,7 @@ const CalculationResults = ({ price, distance, duration }) => {
   return (
     <>
       {price === "" ? null : (
-        <div className="resultsContainer bg-dark text-light container-fluid fixed-bottom d-flex justify-content-around shadow ">
+        <div className="resultsContainer bg-dark text-light container-fluid fixed-bottom d-flex justify-content-around shadow animate__animated animate__fadeInUp">
           <div className="m-1">
             Pituus <RiPinDistanceFill color="#0dcaf0" />
             <br />
