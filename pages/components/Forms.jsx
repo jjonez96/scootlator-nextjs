@@ -195,7 +195,7 @@ const Forms = ({
                 <Button onClick={decrement} className="decrement btn btn-dark">
                   - 0.01
                 </Button>
-                <Form.Label className="text-light text-center mx-2">
+                <Form.Label className="text-light text-center mx-1">
                   {toFixedPrice}€/min + 1€
                 </Form.Label>
               </Form.Group>
