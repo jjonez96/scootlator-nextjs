@@ -166,6 +166,9 @@ const Forms = ({
                 onChange={(e) => setSelected(e.target.value)}
                 required
               >
+                <option value="" defaultValue={0} disabled={false}>
+                  Valitse hinta
+                </option>
                 {operators.map((service) => (
                   <option
                     key={`${service.pricePerMin},${service.name},${service.startPrice}`}
@@ -182,7 +185,6 @@ const Forms = ({
                   className="input-height bg-dark text-light text-center "
                   value={toFixedPrice}
                   type="text"
-                  inputMode="numeric"
                   ref={selectInputRef}
                   step={0.01}
                   onChange={(e) => setSelected(+e.target.value)}
@@ -193,7 +195,7 @@ const Forms = ({
                 <Button onClick={decrement} className="decrement btn btn-dark">
                   - 0.01
                 </Button>
-                <Form.Label className="text-light text-center  ">
+                <Form.Label className="text-light text-center mx-2">
                   {toFixedPrice}€/min + 1€
                 </Form.Label>
               </Form.Group>

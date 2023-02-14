@@ -28,7 +28,7 @@ export default function Home() {
   const [duration, setDuration] = useState("");
   const [price, setPrice] = useState("");
   const [libraries] = useState(["places"]);
-  const [selected, setSelected] = useState(0.2);
+  const [selected, setSelected] = useState(0);
   const [otherPrice, setOtherPrice] = useState(true);
 
   /** Refs */
@@ -113,6 +113,7 @@ export default function Home() {
   };
   const handleNumberInput = () => {
     setOtherPrice((current) => !current);
+    setSelected(0.2);
   };
 
   if (!isLoaded) {
