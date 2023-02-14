@@ -26,12 +26,18 @@ const Forms = ({
   const autocompleteRef = useRef();
   const operators = useOperators();
   const location = useGeoLocation();
+
+  /**Functions for other price */
   const increment = () => {
     setSelected((selected += 0.01));
   };
   const decrement = () => {
     setSelected((selected -= 0.01));
   };
+
+  const float = parseFloat(selected);
+  const toFixedPrice = float.toFixed(2);
+
   const center = location.coordinates;
   const defaultBounds = {
     north: center.lat + 0.1,
@@ -80,8 +86,7 @@ const Forms = ({
         originRef.current.value = `${place.formatted_address}`;
       });
   };
-  const float = parseFloat(selected);
-  const toFixedPrice = float.toFixed(2);
+
   return (
     <main>
       <div className="formContainer fixed-top shadow p-1 container-fluid ">
@@ -177,14 +182,18 @@ const Forms = ({
                   className="input-height bg-dark text-light text-center "
                   value={toFixedPrice}
                   type="text"
-                  inputMode="decimal"
+                  inputMode="numeric"
                   ref={selectInputRef}
                   step={0.01}
                   onChange={(e) => setSelected(+e.target.value)}
                 />
-                <Button onClick={increment}>+0.01</Button>
-                <Button onClick={decrement}>-0.01</Button>
-                <Form.Label className="text-light text-center btn-success ">
+                <Button onClick={increment} className="increment btn btn-dark">
+                  + 0.01
+                </Button>
+                <Button onClick={decrement} className="decrement btn btn-dark">
+                  - 0.01
+                </Button>
+                <Form.Label className="text-light text-center  ">
                   {toFixedPrice}€/min + 1€
                 </Form.Label>
               </Form.Group>

@@ -253,3 +253,37 @@ button.gm-ui-hover-effect > span {
   top: 1px;
   font-weight: 400;
 }
+
+/* Increment and decrement button styles */
+.increment {
+  position: absolute;
+  top: 1px;
+  right: 0.5px;
+}
+@media only screen and (max-width: 1200px) {
+  .increment {
+    right: 1.6px;
+  }
+}
+.increment:hover {
+  background-color: #5fc225 !important;
+  color: #000 !important;
+}
+.increment:focus {
+  background-color: #5fc225 !important;
+  color: #000 !important;
+}
+.decrement {
+  position: absolute;
+  top: 1px;
+  left: 2px;
+}
+.decrement:hover {
+  background-color: #dc3545 !important;
+  transition: all ease !important;
+  color: #000 !important;
+}
+.decrement:focus {
+  background-color: #dc3545 !important;
+  color: #000 !important;
+}
