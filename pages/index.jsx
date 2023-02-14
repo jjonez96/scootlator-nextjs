@@ -28,7 +28,7 @@ export default function Home() {
   const [duration, setDuration] = useState("");
   const [price, setPrice] = useState("");
   const [libraries] = useState(["places"]);
-  const [selected, setSelected] = useState();
+  const [selected, setSelected] = useState(0.2);
   const [otherPrice, setOtherPrice] = useState(true);
 
   /** Refs */
@@ -95,10 +95,9 @@ export default function Home() {
     setDistance("");
     setDuration("");
     setPrice("");
+    setSelected(0.2);
     map.panTo(center);
     map.setZoom(12 - 6);
-    setSelected(0);
-    selectInputRef.current.value = "";
     destinationRef.current.value = "";
     originRef.current.value = "";
   };
@@ -120,7 +119,7 @@ export default function Home() {
     return <LoadingScreen />;
   }
 
-  /** Removes unwanted elements from body */
+  /** Removes unnessescary elements from body */
   document
     .querySelectorAll(".pac-container")
     .forEach((element) => element.remove());

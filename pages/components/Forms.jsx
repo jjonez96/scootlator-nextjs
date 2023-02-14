@@ -7,7 +7,6 @@ import { FaTimes } from "react-icons/fa";
 import VoiMarkers from "./VoiMarkers";
 import useOperators from "../../hooks/useOperators";
 import useGeoLocation from "../../hooks/useGeoLocation";
-import Head from "next/head";
 
 const Forms = ({
   originRef,
@@ -27,7 +26,12 @@ const Forms = ({
   const autocompleteRef = useRef();
   const operators = useOperators();
   const location = useGeoLocation();
-
+  const increment = () => {
+    setSelected((selected += 0.01));
+  };
+  const decrement = () => {
+    setSelected((selected -= 0.01));
+  };
   const center = location.coordinates;
   const defaultBounds = {
     north: center.lat + 0.1,
@@ -76,6 +80,8 @@ const Forms = ({
         originRef.current.value = `${place.formatted_address}`;
       });
   };
+  const float = parseInt(selected);
+  const toFixedPrice = float.toFixed(2);
   return (
     <main>
       <div className="formContainer fixed-top shadow p-1 container-fluid ">
@@ -155,10 +161,6 @@ const Forms = ({
                 onChange={(e) => setSelected(e.target.value)}
                 required
               >
-                <option value="" disabled={false}>
-                  Valitse hinta
-                </option>
-
                 {operators.map((service) => (
                   <option
                     key={`${service.pricePerMin},${service.name},${service.startPrice}`}
@@ -173,15 +175,17 @@ const Forms = ({
               <Form.Group className=" form-floating priceSelect">
                 <Form.Control
                   className="input-height bg-dark text-light text-center "
-                  type="number"
+                  value={selected.toFixed(2)}
+                  type="text"
+                  inputMode="decimal"
                   ref={selectInputRef}
-                  onChange={(e) => setSelected(e.target.value)}
-                  onClick={(e) => setSelected(e.target.value)}
-                  defaultValue={0.1}
                   step={0.01}
+                  onChange={(e) => setSelected(+e.target.value)}
                 />
+                <Button onClick={increment}>+0.01</Button>
+                <Button onClick={decrement}>-0.01</Button>
                 <Form.Label className="text-light text-center btn-success ">
-                  {selected}€/min + 1€
+                  {selected.toFixed(2)}€/min + 1€
                 </Form.Label>
               </Form.Group>
             )}
