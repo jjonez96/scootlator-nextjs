@@ -80,6 +80,8 @@ const Forms = ({
         originRef.current.value = `${place.formatted_address}`;
       });
   };
+  const float = parseFloat(selected);
+  const toFixedPrice = float.toFixed(2);
   return (
     <main>
       <div className="formContainer fixed-top shadow p-1 container-fluid ">
@@ -173,7 +175,7 @@ const Forms = ({
               <Form.Group className=" form-floating priceSelect">
                 <Form.Control
                   className="input-height bg-dark text-light text-center "
-                  value={selected.toFixed(2)}
+                  value={toFixedPrice}
                   type="text"
                   inputMode="decimal"
                   ref={selectInputRef}
@@ -183,7 +185,7 @@ const Forms = ({
                 <Button onClick={increment}>+0.01</Button>
                 <Button onClick={decrement}>-0.01</Button>
                 <Form.Label className="text-light text-center btn-success ">
-                  {selected.toFixed(2)}€/min + 1€
+                  {toFixedPrice}€/min + 1€
                 </Form.Label>
               </Form.Group>
             )}
