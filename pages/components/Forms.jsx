@@ -80,8 +80,6 @@ const Forms = ({
         originRef.current.value = `${place.formatted_address}`;
       });
   };
-  const float = parseInt(selected);
-  const toFixedPrice = float.toFixed(2);
   return (
     <main>
       <div className="formContainer fixed-top shadow p-1 container-fluid ">
