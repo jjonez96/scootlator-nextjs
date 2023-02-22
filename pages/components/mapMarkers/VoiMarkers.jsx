@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { MdMyLocation } from "react-icons/md";
 import { IoBatteryCharging } from "react-icons/io5";
-import markerIcons from "../../styles/markerIcons.json";
+import markerIcons from "../../../styles/markerIcons.json";
 import Spinner from "react-bootstrap/Spinner";
 import useSWR from "swr";
 

@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import { MdMyLocation } from "react-icons/md";
 import { IoBatteryCharging } from "react-icons/io5";
 import Spinner from "react-bootstrap/Spinner";
-import markerIcons from "../../styles/markerIcons.json";
+import markerIcons from "../../../styles/markerIcons.json";
 import useSWR from "swr";
 
 const TierMarkers = ({ originRef, destinationRef, geocodeJson, clusterer }) => {

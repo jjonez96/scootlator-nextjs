@@ -1,11 +1,11 @@
 import Head from "next/head";
 import { useRef, useState } from "react";
 import useGeoLocation from "../hooks/useGeoLocation";
-import LoadingScreen from "./components/LoadingScreen";
-import CalculationResults from "./components/CalculationResults";
-import Forms from "./components/Forms";
-import TierMarkers from "./components/TierMarkers";
-import VoiMarkers from "./components/VoiMarkers";
+import LoadingScreen from "./components/UI/LoadingScreen";
+import CalculationResults from "./components/UI/CalculationResults";
+import FormContainer from "./components/UI/formComponents/FormContainer";
+import TierMarkers from "./components/mapMarkers/TierMarkers";
+import VoiMarkers from "./components/mapMarkers/VoiMarkers";
 import mapstyle from "../styles/mapstyle.json";
 import clusterStyles from "../styles/clusterIcons.json";
 import markerIcons from "../styles/markerIcons.json";
@@ -185,7 +185,7 @@ export default function Home() {
           <DirectionsRenderer directions={directionResponse} />
         )}
       </GoogleMap>
-      <Forms
+      <FormContainer
         setSelected={setSelected}
         selected={selected}
         handleNumberInput={handleNumberInput}
