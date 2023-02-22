@@ -18,6 +18,7 @@ const FormContainer = ({
   clearRoute,
   handleNumberInput,
   otherPrice,
+  handleDoubleClickClear,
 }) => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -53,6 +54,7 @@ const FormContainer = ({
               variant="danger"
               aria-label="danger"
               onClick={clearRoute}
+              onDoubleClick={handleDoubleClickClear}
             >
               <FaTimes />
             </Button>

@@ -19,7 +19,9 @@ const CalculationResults = ({ price, distance, duration }) => {
 
   return (
     <>
-      {price === "" ? null : (
+      {price === "" ? (
+        <div></div>
+      ) : (
         <div className="resultsContainer bg-dark text-light container-fluid fixed-bottom d-flex justify-content-around shadow animate__animated animate__fadeInUp">
           <div className="m-1">
             Pituus <RiPinDistanceFill color="#0dcaf0" />

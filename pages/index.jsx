@@ -13,7 +13,6 @@ import markerIcons from "../styles/markerIcons.json";
 import {
   DirectionsRenderer,
   GoogleMap,
-  Marker,
   MarkerClusterer,
   MarkerF,
   useJsApiLoader,
@@ -90,16 +89,17 @@ export default function Home() {
       });
   };
 
+  /** Clearing functions for red button */
   const clearRoute = () => {
-    setDirectionResponse(null);
-    setDistance("");
-    setDuration("");
-    setPrice("");
-    setSelected(0.2);
-    map.panTo(center);
-    map.setZoom(12 - 6);
     destinationRef.current.value = "";
     originRef.current.value = "";
+  };
+  const handleDoubleClickClear = () => {
+    setPrice("");
+    setDistance("");
+    setDuration("");
+    map.panTo(center);
+    map.setZoom(12 - 6);
   };
 
   const { isLoaded } = useJsApiLoader({
@@ -199,6 +199,7 @@ export default function Home() {
         handleScootMarkers={handleScootMarkers}
         onOffMarkers={onOffMarkers}
         geocodeJson={geocodeJson}
+        handleDoubleClickClear={handleDoubleClickClear}
       />
       <CalculationResults
         duration={duration}
