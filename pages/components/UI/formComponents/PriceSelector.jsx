@@ -22,7 +22,7 @@ const PriceSelector = ({
   const handleSelectChange = (e) => {
     const value = e.target.value;
     setSelected(value);
-    if (value === "asd") {
+    if (value === "muu") {
       setOtherPrice(true);
       setSelected(0.2);
     } else {
@@ -62,7 +62,7 @@ const PriceSelector = ({
               aloitusmaksu
             </option>
           ))}
-          <option value="asd">muu</option>
+          <option value="muu">Muu hinta</option>
         </Form.Select>
       ) : (
         <Form.Group className="form-floating priceSelect">
