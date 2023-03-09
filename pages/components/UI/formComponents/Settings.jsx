@@ -2,12 +2,7 @@ import { Form, Dropdown } from "react-bootstrap";
 import { FiSettings } from "react-icons/fi";
 import TierMarkers from "../../mapMarkers/TierMarkers";
 import VoiMarkers from "../../mapMarkers/VoiMarkers";
-const Settings = ({
-  onOffMarkers,
-  handleScootMarkers,
-  handleNumberInput,
-  otherPrice,
-}) => {
+const Settings = ({ onOffMarkers, handleScootMarkers }) => {
   return (
     <Dropdown>
       <Dropdown.Toggle className="mx-2 btn btn-info" aria-label="info">
@@ -21,14 +16,6 @@ const Settings = ({
           value={onOffMarkers}
           id=""
           defaultChecked={onOffMarkers}
-        />
-        <hr className="text-info" />
-        Muu hinta
-        <Form.Check
-          type="switch"
-          onChange={handleNumberInput}
-          value={otherPrice}
-          id=""
         />
       </Dropdown.Menu>
       {onOffMarkers === true ? (

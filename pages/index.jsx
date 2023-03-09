@@ -27,8 +27,8 @@ export default function Home() {
   const [duration, setDuration] = useState("");
   const [price, setPrice] = useState("");
   const [libraries] = useState(["places"]);
-  const [selected, setSelected] = useState(0);
-  const [otherPrice, setOtherPrice] = useState(true);
+  const [selected, setSelected] = useState(0.2);
+  const [otherPrice, setOtherPrice] = useState(false);
 
   /** Refs */
   /** @type React.MutableRefObject<HTMLInputElement> */
@@ -93,6 +93,7 @@ export default function Home() {
   const clearRoute = () => {
     destinationRef.current.value = "";
     originRef.current.value = "";
+    setOtherPrice(false);
   };
   const handleDoubleClickClear = () => {
     setPrice("");
@@ -190,6 +191,7 @@ export default function Home() {
         selected={selected}
         handleNumberInput={handleNumberInput}
         otherPrice={otherPrice}
+        setOtherPrice={setOtherPrice}
         originRef={originRef}
         destinationRef={destinationRef}
         map={map}

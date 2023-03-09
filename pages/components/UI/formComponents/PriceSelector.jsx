@@ -6,6 +6,8 @@ const PriceSelector = ({
   setSelected,
   selected,
   otherPrice,
+  handleNumberInput,
+  setOtherPrice,
 }) => {
   const operators = useOperators();
 
@@ -17,16 +19,35 @@ const PriceSelector = ({
     setSelected((selected -= 0.01));
   };
 
-  const float = parseFloat(selected);
+  const handleSelectChange = (e) => {
+    const value = e.target.value;
+    setSelected(value);
+    if (value === "asd") {
+      setOtherPrice(true);
+      setSelected(0.2);
+    } else {
+      setOtherPrice(false);
+    }
+  };
+
+  const float = isNaN(selected) ? 0.2 : parseFloat(selected);
   const toFixedPrice = float.toFixed(2);
 
   return (
     <>
-      {otherPrice === true ? (
+      <input
+        type="checkbox"
+        onChange={handleNumberInput}
+        checked={otherPrice}
+        value={selected}
+        hidden={true}
+      />
+      {otherPrice === false ? (
         <Form.Select
           className="form-control text-light bg-dark  priceSelect "
           ref={selectInputRef}
-          onChange={(e) => setSelected(e.target.value)}
+          onChange={handleSelectChange}
+          value={selected}
           required
         >
           <option value="" defaultValue={0} disabled={false}>
@@ -41,6 +62,7 @@ const PriceSelector = ({
               aloitusmaksu
             </option>
           ))}
+          <option value="asd">muu</option>
         </Form.Select>
       ) : (
         <Form.Group className="form-floating priceSelect">
@@ -66,4 +88,5 @@ const PriceSelector = ({
     </>
   );
 };
+
 export default PriceSelector;
