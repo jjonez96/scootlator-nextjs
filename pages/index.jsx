@@ -42,7 +42,6 @@ export default function Home() {
   const location = useGeoLocation();
   const center = location.coordinates;
 
-  /** Operator selector */
   const calculateRoute = async () => {
     const directionService = new google.maps.DirectionsService();
     const results = await directionService.route({
@@ -50,12 +49,11 @@ export default function Home() {
       destination: destinationRef.current.value,
       travelMode: google.maps.TravelMode.BICYCLING,
     });
-
     setDirectionResponse(results);
     setDistance(results.routes[0].legs[0].distance.text);
     setDuration(results.routes[0].legs[0].duration.text);
 
-    /** If its night time then pricing will be increased */
+    /** in night time pricing and duration will be increased */
     const hours = new Date().getHours();
     const isDayTime = hours >= 6 && hours < 22;
     if (isDayTime === true) {
@@ -108,7 +106,7 @@ export default function Home() {
     libraries,
   });
 
-  /** Settings on/off switches */
+  /** Settings on/off switch */
   const handleScootMarkers = () => {
     setOnOffMarkers((current) => !current);
   };
