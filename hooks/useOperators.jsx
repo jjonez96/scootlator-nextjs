@@ -10,7 +10,7 @@ const useOperators = () => {
           return;
         }
         response.json().then((tierPrice) => {
-          setTierPrice(tierPrice);
+          setTierPrice(tierPrice.attributes);
         });
       })
       .catch((err) => {

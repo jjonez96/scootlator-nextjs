@@ -3,7 +3,6 @@ import { FaTimes } from "react-icons/fa";
 import OriginAndDestination from "./OriginAndDestination";
 import PriceSelector from "./PriceSelector";
 import Settings from "./Settings";
-
 const FormContainer = ({
   originRef,
   destinationRef,

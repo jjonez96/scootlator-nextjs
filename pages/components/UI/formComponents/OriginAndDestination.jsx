@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Form } from "react-bootstrap";
 import { MdClose, MdMyLocation } from "react-icons/md";
 import useGeoLocation from "../../../../hooks/useGeoLocation";
@@ -10,7 +10,6 @@ const OriginAndDestination = ({
   geocodeJson,
 }) => {
   const autocompleteRef = useRef();
-
   const location = useGeoLocation();
   const center = location.coordinates;
 
@@ -29,17 +28,18 @@ const OriginAndDestination = ({
   };
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const autocomplete = window.google.maps;
-      autocompleteRef.current = new autocomplete.places.Autocomplete(
-        destinationRef.current,
-        settings,
-        (autocompleteRef.current = new autocomplete.places.Autocomplete(
-          originRef.current,
-          settings
-        ))
-      );
-    }
+    if (typeof window === "undefined") return;
+    const { google } = window;
+    if (!google) return;
+    const autocompleteOrigin = new google.maps.places.Autocomplete(
+      originRef.current,
+      settings
+    );
+    const autocompleteDestination = new google.maps.places.Autocomplete(
+      destinationRef.current,
+      settings
+    );
+    autocompleteRef.current = { autocompleteOrigin, autocompleteDestination };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [settings]);
 
@@ -47,7 +47,6 @@ const OriginAndDestination = ({
     destinationRef.current.value = "";
   };
 
-  /**Click handler for changing coordinates to address*/
   const handleOriginClick = () => {
     const url = `${geocodeJson}?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&latlng=${center.lat},${center.lng}`;
     fetch(url)
@@ -91,12 +90,11 @@ const OriginAndDestination = ({
         </Form.Label>
         <MdClose
           className="icon text-info bg-dark icon"
-          onClick={(e) => {
-            clearDestination(e);
-          }}
+          onClick={clearDestination}
         />
       </Form.Group>
     </>
   );
 };
+
 export default OriginAndDestination;

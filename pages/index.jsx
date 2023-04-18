@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useGeoLocation from "../hooks/useGeoLocation";
 import LoadingScreen from "./components/UI/LoadingScreen";
 import CalculationResults from "./components/UI/CalculationResults";
@@ -9,7 +9,6 @@ import VoiMarkers from "./components/mapMarkers/VoiMarkers";
 import mapstyle from "../styles/mapstyle.json";
 import clusterStyles from "../styles/clusterIcons.json";
 import markerIcons from "../styles/markerIcons.json";
-
 import {
   DirectionsRenderer,
   GoogleMap,
@@ -94,6 +93,7 @@ export default function Home() {
     destinationRef.current.value = "";
     originRef.current.value = "";
   };
+
   const handleDoubleClickClear = () => {
     setPrice("");
     setDistance("");
@@ -132,7 +132,7 @@ export default function Home() {
       </Head>
       <GoogleMap
         center={center}
-        zoom={12 - 6}
+        zoom={12}
         ref={mapRef}
         onClick={(ev) => {
           handleDestinationMapClick(ev);

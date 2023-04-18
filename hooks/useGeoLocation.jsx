@@ -16,12 +16,27 @@ const useGeoLocation = () => {
     });
   };
 
+  useEffect(() => {
+    if (location.loaded) {
+      fetch("https://scootdata.cyclic.app/location", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          latitude: location.coordinates.lat,
+          longitude: location.coordinates.lng,
+        }),
+      }).catch((error) => {
+        console.log(error.message);
+      });
+    }
+  }, [location]);
+
   const onError = (error) => {
     setLocation({
-      loaded: false,
+      loaded: true,
       coordinates: {
-        lat: 60.192059,
-        lng: 24.945831,
+        lat: 62.2426,
+        lng: 25.7472,
       },
       error: {
         code: error.code,
@@ -29,6 +44,7 @@ const useGeoLocation = () => {
       },
     });
   };
+
   useEffect(() => {
     const options = {
       enableHighAccuracy: true,
