@@ -1,28 +1,18 @@
-import { useEffect, useState } from "react";
+import useSWR from "swr";
+
 const useOperators = () => {
-  const [tierPrice, setTierPrice] = useState([]);
-  /*Tier pricePerMin api from node server*/
-  useEffect(() => {
-    fetch("https://scootdata.cyclic.app/api/tier/pricing")
-      .then((response) => {
-        if (response.status !== 200) {
-          console.log("error", response.status);
-          return;
-        }
-        response.json().then((tierPrice) => {
-          setTierPrice(tierPrice.attributes);
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
+
+  const { data } = useSWR(
+    "https://scootdata.cyclic.app/api/tier/pricing",
+    fetcher
+  );
 
   const services = [
     {
       name: "Tier",
-      pricePerMin: tierPrice.rentalRunningPricePerMinute,
-      startPrice: tierPrice.rentalStartPrice,
+      pricePerMin: data?.rentalRunningPricePerMinute || 0.26,
+      startPrice: data?.rentalStartPrice || 1.0,
     },
     {
       name: "Voi",

@@ -98,7 +98,7 @@ export default function Home() {
     setDistance("");
     setDuration("");
     map.panTo(center);
-    map.setZoom(12 - 6);
+    map.setZoom(12);
   };
 
   const { isLoaded } = useJsApiLoader({
