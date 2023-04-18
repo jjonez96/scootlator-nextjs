@@ -18,6 +18,7 @@ const FormContainer = ({
   handleNumberInput,
   otherPrice,
   handleDoubleClickClear,
+  setOtherPrice,
 }) => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -39,14 +40,14 @@ const FormContainer = ({
             <Settings
               onOffMarkers={onOffMarkers}
               handleScootMarkers={handleScootMarkers}
-              handleNumberInput={handleNumberInput}
-              otherPrice={otherPrice}
             />
             <PriceSelector
               selectInputRef={selectInputRef}
               setSelected={setSelected}
               selected={selected}
               otherPrice={otherPrice}
+              handleNumberInput={handleNumberInput}
+              setOtherPrice={setOtherPrice}
             />
             <Button
               className="mx-2 fw-bold text-dark "
