@@ -31,12 +31,13 @@ const TierMarkers = ({ originRef, destinationRef, geocodeJson, clusterer }) => {
         originRef.current.value = `${place.formatted_address}`;
       });
   };
-
   return (
     <>
       {data.map((marker, id) => (
         <Marker
-          icon={markerIcons[2]}
+          icon={
+            marker.vehicleType === "escooter" ? markerIcons[2] : markerIcons[3]
+          }
           key={id}
           title={"Tier"}
           clusterer={clusterer}

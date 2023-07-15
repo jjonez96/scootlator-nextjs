@@ -1,5 +1,6 @@
 [
   { "url": "./location.png", "scaledSize": { "width": 28, "height": 28 } },
   { "url": "./voi.png", "scaledSize": { "width": 25, "height": 25 } },
-  { "url": "./tier.png", "scaledSize": { "width": 25, "height": 25 } }
+  { "url": "./tier.png", "scaledSize": { "width": 25, "height": 25 } },
+  { "url": "./tier-bike.png", "scaledSize": { "width": 25, "height": 25 } }
 ]

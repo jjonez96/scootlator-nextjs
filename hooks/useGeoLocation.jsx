@@ -18,7 +18,7 @@ const useGeoLocation = () => {
 
   useEffect(() => {
     if (location.loaded) {
-      fetch("https://scootdata.cyclic.app/location", {
+      fetch("http://localhost:7000/location", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -30,13 +30,12 @@ const useGeoLocation = () => {
       });
     }
   }, [location]);
-
   const onError = (error) => {
     setLocation({
       loaded: true,
       coordinates: {
-        lat: 62.2426,
-        lng: 25.7472,
+        lat: 63.109879,
+        lng: 21.599602,
       },
       error: {
         code: error.code,
