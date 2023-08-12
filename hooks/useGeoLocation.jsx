@@ -18,7 +18,7 @@ const useGeoLocation = () => {
 
   useEffect(() => {
     if (location.loaded) {
-      fetch("http://localhost:7000/location", {
+      fetch("https://scootdata.cyclic.app/location", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
