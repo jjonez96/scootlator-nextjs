@@ -26,7 +26,7 @@ export default function Home() {
   const [duration, setDuration] = useState("");
   const [price, setPrice] = useState("");
   const [libraries] = useState(["places"]);
-  const [selected, setSelected] = useState(0.2);
+  const [selected, setSelected] = useState(null);
   const [otherPrice, setOtherPrice] = useState(false);
 
   /** Refs */
@@ -91,13 +91,14 @@ export default function Home() {
     destinationRef.current.value = "";
     originRef.current.value = "";
     setOtherPrice(false);
-    setSelected(0);
+    setSelected(null);
   };
 
   const handleDoubleClickClear = () => {
     setPrice("");
     setDistance("");
     setDuration("");
+    setSelected(null);
     map.panTo(center);
     map.setZoom(12);
   };
@@ -113,7 +114,7 @@ export default function Home() {
   };
   const handleNumberInput = () => {
     setOtherPrice((current) => !current);
-    setSelected(0.2);
+    setSelected(null);
   };
 
   if (!isLoaded) {
