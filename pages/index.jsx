@@ -91,6 +91,7 @@ export default function Home() {
     destinationRef.current.value = "";
     originRef.current.value = "";
     setOtherPrice(false);
+    setSelected(0);
   };
 
   const handleDoubleClickClear = () => {

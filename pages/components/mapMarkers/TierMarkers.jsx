@@ -31,6 +31,10 @@ const TierMarkers = ({ originRef, destinationRef, geocodeJson, clusterer }) => {
         originRef.current.value = `${place.formatted_address}`;
       });
   };
+  let newTime = new Date(selectedMarker.locationUpdate);
+  const minutes = String(newTime.getMinutes()).padStart(2, "0");
+  const hours = String(newTime.getHours()).padStart(2, "0");
+  const time = hours + ":" + minutes;
   return (
     <>
       {data.map((marker, id) => (
@@ -56,7 +60,9 @@ const TierMarkers = ({ originRef, destinationRef, geocodeJson, clusterer }) => {
           <div className="text-center">
             <b className="tierheading">Tier</b>
             <div>
-              <b> {selectedMarker.vehicleType}</b>{" "}
+              <b>Päivitetty: {time}</b>
+              <br />
+              <b> {selectedMarker.vehicleType}</b>
               {selectedMarker.batteryLevel > 50 ? (
                 <b style={{ color: "#00ff00" }}>
                   <IoBatteryCharging size={20} />
