@@ -21,7 +21,6 @@ const FormContainer = ({
   clearRoute,
   handleNumberInput,
   otherPrice,
-  handleDoubleClickClear,
   setOtherPrice,
 }) => {
   const handleFormSubmit = (e) => {
@@ -71,7 +70,6 @@ const FormContainer = ({
               variant="danger"
               aria-label="danger"
               onClick={clearRoute}
-              onDoubleClick={handleDoubleClickClear}
             >
               <FaTimes />
             </Button>

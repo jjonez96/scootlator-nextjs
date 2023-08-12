@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import useGeoLocation from "../hooks/useGeoLocation";
 import LoadingScreen from "./components/UI/LoadingScreen";
 import CalculationResults from "./components/UI/CalculationResults";
@@ -26,7 +26,7 @@ export default function Home() {
   const [duration, setDuration] = useState("");
   const [price, setPrice] = useState("");
   const [libraries] = useState(["places"]);
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState(0);
   const [otherPrice, setOtherPrice] = useState(false);
 
   /** Refs */
@@ -91,14 +91,10 @@ export default function Home() {
     destinationRef.current.value = "";
     originRef.current.value = "";
     setOtherPrice(false);
-    setSelected(null);
-  };
-
-  const handleDoubleClickClear = () => {
+    setSelected(0);
     setPrice("");
     setDistance("");
     setDuration("");
-    setSelected(null);
     map.panTo(center);
     map.setZoom(12);
   };
@@ -114,7 +110,7 @@ export default function Home() {
   };
   const handleNumberInput = () => {
     setOtherPrice((current) => !current);
-    setSelected(null);
+    setSelected(0.2);
   };
 
   if (!isLoaded) {
@@ -201,7 +197,6 @@ export default function Home() {
         handleScootMarkers={handleScootMarkers}
         onOffMarkers={onOffMarkers}
         geocodeJson={geocodeJson}
-        handleDoubleClickClear={handleDoubleClickClear}
       />
       <CalculationResults
         duration={duration}

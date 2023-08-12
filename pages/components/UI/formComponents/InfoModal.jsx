@@ -27,14 +27,8 @@ const InfoModal = ({ showModal, handleModalToggle }) => {
           josta löytyy sama paikannus ikoni.
         </p>
         <p>
-          Valitse hinta kohdasta voit valita hinnan. Tierin hinta vaihtelee
-          automaattisesti riippuen paikkakunnasta. Jos valitset Muu hinta voit
-          määrittää minuuttihinnan manuaalisesti.
-        </p>
-        <p>
-          Ratas napista voit halutessasi laittaa skuutit pois kartalta. Punainen
-          reset nappi tyhjää kentät kun sitä painaa kerran. Tuplaklikkaamalla
-          resetoi koko äpin.
+          Tierin hinta vaihtelee automaattisesti riippuen paikkakunnasta. Jos
+          valitset Muu hinta voit määrittää minuuttihinnan manuaalisesti.
         </p>
         <p>
           <strong>Huom!</strong> Tällä et voi laskea matkoja Helsingistä

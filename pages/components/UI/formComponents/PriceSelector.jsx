@@ -10,7 +10,7 @@ const PriceSelector = ({
   setOtherPrice,
 }) => {
   const operators = useOperators();
-  console.log(selected);
+
   /**Functions for other price */
   const increment = () => {
     setSelected((selected += 0.01));
@@ -18,9 +18,11 @@ const PriceSelector = ({
   const decrement = () => {
     setSelected((selected -= 0.01));
   };
+
   if (selected <= 0.1 || selected >= 0.9) {
-    setSelected(null);
+    setSelected(0);
   }
+
   const handleSelectChange = (e) => {
     const value = e.target.value;
     setSelected(value);

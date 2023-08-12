@@ -73,7 +73,7 @@ const OriginAndDestination = ({
           className="icon text-info bg-dark"
           onClick={(e) => {
             map.panTo(center);
-            map.setZoom(18);
+            map.setZoom(14);
             handleOriginClick(e);
           }}
         />
