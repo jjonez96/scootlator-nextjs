@@ -4,7 +4,7 @@ const useOperators = () => {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
   const { data } = useSWR(
-    "https://scootdata.cyclic.app/api/tier/pricing",
+    "https://scootdata.onrender.com/api/tier/pricing",
     fetcher
   );
 

@@ -13,7 +13,7 @@ const TierMarkers = ({ originRef, destinationRef, geocodeJson, clusterer }) => {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
   const { data, error } = useSWR(
-    "https://scootdata.cyclic.app/api/tier",
+    "https://scootdata.onrender.com/api/tier",
     fetcher
   );
 

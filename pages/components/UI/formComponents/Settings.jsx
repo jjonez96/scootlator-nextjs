@@ -1,7 +1,6 @@
 import { Form, Dropdown } from "react-bootstrap";
 import { FiSettings } from "react-icons/fi";
 import TierMarkers from "../../mapMarkers/TierMarkers";
-import VoiMarkers from "../../mapMarkers/VoiMarkers";
 const Settings = ({ onOffMarkers, handleScootMarkers }) => {
   return (
     <Dropdown>
@@ -20,7 +19,6 @@ const Settings = ({ onOffMarkers, handleScootMarkers }) => {
       </Dropdown.Menu>
       {onOffMarkers === true ? (
         <div>
-          <VoiMarkers />
           <TierMarkers />
         </div>
       ) : null}

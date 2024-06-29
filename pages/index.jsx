@@ -5,7 +5,6 @@ import LoadingScreen from "./components/UI/LoadingScreen";
 import CalculationResults from "./components/UI/CalculationResults";
 import FormContainer from "./components/UI/formComponents/FormContainer";
 import TierMarkers from "./components/mapMarkers/TierMarkers";
-import VoiMarkers from "./components/mapMarkers/VoiMarkers";
 import mapstyle from "../styles/mapstyle.json";
 import clusterStyles from "../styles/clusterIcons.json";
 import markerIcons from "../styles/markerIcons.json";
@@ -162,12 +161,6 @@ export default function Home() {
             {(clusterer) => (
               <div className="hideload">
                 <TierMarkers
-                  originRef={originRef}
-                  destinationRef={destinationRef}
-                  geocodeJson={geocodeJson}
-                  clusterer={clusterer}
-                />
-                <VoiMarkers
                   originRef={originRef}
                   destinationRef={destinationRef}
                   geocodeJson={geocodeJson}
